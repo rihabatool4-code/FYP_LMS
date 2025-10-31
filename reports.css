@@ -1,0 +1,570 @@
+/* Variables and Reset - Imported from Admin Dashboard CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+:root {
+    --primary-color: #2a62ff;
+    --primary-hover: #1e52e8;
+    --background-light: #f4f7fa;
+    --background-dark: #e8ecf1;
+    --text-dark: #1f2937;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    /* Custom Report Colors */
+    --status-active-bg: #ecfdf5; /* Light Green */
+    --status-active-text: #059669; /* Dark Green */
+    --status-overdue-bg: #fee2e2; /* Light Red */
+    --status-overdue-text: #dc2626; /* Dark Red */
+    --status-returned-bg: #e0f2fe; /* Light Blue */
+    --status-returned-text: #0284c7; /* Dark Blue */
+}
+
+body {
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    font-size: 16px;
+}
+
+/* ----------------------------------------------------------------------- */
+/* KEYFRAME ANIMATIONS (Admin Dashboard) */
+/* ----------------------------------------------------------------------- */
+@keyframes fadeInRise {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(42, 98, 255, 0.4); }
+    70% { box-shadow: 0 0 0 5px rgba(42, 98, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(42, 98, 255, 0); }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-3px); }
+    40% { transform: translateX(3px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+    100% { transform: translateX(0); }
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px 15px 60px; /* Top, Right, Bottom, Left */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  animation: slideDown 0.5s ease-out;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* --- NEW LOGO STYLES FOR IMAGE UPLOAD --- */
+
+/* Ensures the logo container doesn't force a specific shape or background, 
+   just acts as a flex container */
+.logo-container {
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start; /* Align left */
+    height: 50px; /* Set a standard height for the logo area */
+    transition: all 0.3s ease;
+}
+
+/* Styles the actual logo image */
+.ggcw-logo {
+    height: 150%; /* Make the image fill the height of the container */
+    width: auto; /* Allow the width to scale proportionally */
+    object-fit: contain;
+    padding: 5px 0; /* Optional: Add slight vertical padding if needed */
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.ggcw-logo:hover {
+    transform: scale(1.05); /* Add a slight zoom effect on hover */
+}
+/* --- END NEW LOGO STYLES --- */
+
+.navbar .logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #2a62ff;
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+  width: 100%;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: #2a62ff;
+}
+
+.auth-buttons button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-buttons button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.auth-buttons button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.login-btn {
+  background: transparent;
+  color: #2a62ff;
+  border: 2px solid #2a62ff;
+}
+
+.login-btn:hover {
+  background: #2a62ff;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(42, 98, 255, 0.3);
+}
+
+.register-btn {
+  background: #2a62ff;
+  color: white;
+}
+
+.register-btn:hover {
+  background: #2a62ff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(42, 98, 255, 0.4);
+}
+
+
+/* ----------------------------------------------------------------------- */
+/* Main Content & Header */
+/* ----------------------------------------------------------------------- */
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px 60px;
+}
+
+.page-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    position: relative;
+    animation: fadeInRise 0.8s ease-out;
+}
+
+.page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 400;
+    animation: fadeInRise 0.8s ease-out 0.2s backwards;
+}
+
+.btn.back-dashboard {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+.btn.back-dashboard:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* ----------------------------------------------------------------------- */
+/* Main Content Layout & Panels */
+/* ----------------------------------------------------------------------- */
+.reports-content {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.report-config-panel, .report-preview-panel {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    animation: fadeInRise 0.6s ease-out forwards;
+    opacity: 0;
+}
+.report-config-panel {
+    flex: 0 0 350px; /* Wider config panel */
+    animation-delay: 0.4s;
+}
+.report-preview-panel {
+    flex: 1;
+    animation-delay: 0.6s;
+}
+
+.report-config-panel h2, .report-preview-panel h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--background-dark);
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.report-config-panel h2 i, .report-preview-panel h2 i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+/* ----------------------------------------------------------------------- */
+/* Form Elements */
+/* ----------------------------------------------------------------------- */
+.config-group {
+    margin-bottom: 25px;
+}
+
+.config-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* Radio Buttons - Custom Styling */
+.radio-option {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.radio-option input[type="radio"] {
+    /* Hide default radio button */
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+}
+
+.radio-option label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    font-weight: 400;
+    color: var(--text-dark);
+    font-size: 1em; /* Override config-group label font size */
+    margin-bottom: 0;
+}
+
+/* Custom radio button appearance */
+.radio-option label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    background-color: #fff;
+}
+
+.radio-option input[type="radio"]:checked + label::before {
+    border-color: var(--primary-color);
+}
+
+.radio-option label::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.radio-option input[type="radio"]:checked + label::after {
+    opacity: 1;
+}
+
+/* Select Dropdown */
+.form-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    background-color: #fff;
+    appearance: none;
+    background: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%232a62ff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.4-6.3H18.8c-5.8%200-11.1%203.2-13.4%208.4-4.8%2010.7-1.1%2023.7%209.7%2028.5L146.2%20253c5.4%203.2%2012%203.2%2017.4%200L277.3%20106c5.5-2.8%209.3-8.8%209.3-15.1%200-5.4-2.5-10.4-6.6-14.5z%22%2F%3E%3C%2Fsvg%3E') no-repeat right 15px center;
+    background-size: 10px;
+}
+.form-select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(42, 98, 255, 0.2);
+}
+
+
+.btn.generate {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.1em;
+    padding: 15px 15px;
+    margin-top: 25px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+.btn.generate:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(42, 98, 255, 0.3);
+}
+
+/* ----------------------------------------------------------------------- */
+/* Report Table Styling (Inspired by Recent Activities) */
+/* ----------------------------------------------------------------------- */
+.preview-table {
+    border: 1px solid var(--background-dark);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.table-row {
+    display: flex;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--background-dark);
+    align-items: center;
+    font-size: 0.95em;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-row.header {
+    background-color: var(--background-dark);
+    font-weight: 600;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+.table-row.data:hover {
+    background-color: #f0f3f6; /* Subtle hover effect */
+}
+
+/* Column Distribution (Adjusted slightly) */
+.col-book { flex-basis: 38%; font-weight: 600; }
+.col-student { flex-basis: 28%; color: #555; }
+.col-date { flex-basis: 19%; font-size: 0.9em; color: #777; }
+.col-status { flex-basis: 15%; text-align: right; }
+
+/* Badges (Using Admin Dashboard colors) */
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75em;
+    font-weight: 600;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.status-active {
+    background-color: var(--status-active-bg);
+    color: var(--status-active-text);
+    animation: pulse 2s infinite;
+}
+
+.status-overdue {
+    background-color: var(--status-overdue-bg);
+    color: var(--status-overdue-text);
+    animation: shake 0.5s;
+    animation-iteration-count: 1;
+}
+
+.status-returned {
+    background-color: var(--status-returned-bg);
+    color: var(--status-returned-text);
+}
+
+/* Download/Print Buttons */
+.download-section {
+    text-align: right;
+    margin-top: 20px;
+}
+.btn.download-btn, .btn.print-btn {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+.btn.download-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+.btn.download-btn:hover {
+    background-color: var(--primary-hover);
+}
+.btn.print-btn {
+    background-color: #6b7280;
+    color: white;
+}
+.btn.print-btn:hover {
+    background-color: #4b5563;
+}
+.btn i {
+    margin-right: 8px;
+}
+
+/* ----------------------------------------------------------------------- */
+/* Footer (Admin Dashboard Style) */
+/* ----------------------------------------------------------------------- */
+.footer {
+    background-color: #0f172a;
+    color: #cbd5e1;
+    padding: 50px 60px 20px;
+    border-top: 5px solid var(--primary-color);
+    animation: fadeInRise 0.8s ease-out forwards 1.0s;
+    opacity: 0;
+}
+
+.footer-top {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-about { flex: 1 1 300px; }
+.footer-about h3 { color: var(--primary-color); margin-bottom: 10px; font-weight: 700; }
+.footer-about p { font-size: 14px; margin-bottom: 15px; color: #94a3b8; }
+.footer-socials a { margin-right: 10px; font-size: 18px; text-decoration: none; color: #ffffffcc; }
+.footer-socials a:hover { color: var(--primary-color); transform: scale(1.1); }
+
+.footer-links, .footer-support { flex: 1 1 180px; }
+.footer-links h4, .footer-support h4 { color: #ffffff; margin-bottom: 10px; font-weight: 600;}
+.footer-links ul, .footer-support ul { list-style: none; padding: 0; }
+.footer-links li, .footer-support li { margin-bottom: 8px; }
+.footer-links a, .footer-support a { text-decoration: none; color: #cbd5e1; font-size: 14px; }
+.footer-links a:hover, .footer-support a:hover { color: white; padding-left: 5px; }
+
+.footer-bottom {
+    text-align: center;
+    font-size: 13px;
+    color: #94a3b8;
+    border-top: 1px solid #1e293b;
+    padding-top: 20px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+    .navbar { padding: 15px 30px; }
+    .container { padding: 30px 30px; }
+    .reports-content { flex-direction: column; gap: 20px; }
+    .report-config-panel { flex: 1 1 auto; }
+}
+
+@media (max-width: 768px) {
+    .navbar { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .navbar nav { width: 100%; }
+    .navbar ul { gap: 15px; flex-wrap: wrap; }
+    .auth-buttons { margin-top: 10px; }
+    .btn.back-dashboard { position: static; margin-top: 15px; }
+    .footer-top { flex-direction: column; }
+    .table-row { padding: 15px 10px; }
+}
+
+@media (max-width: 500px) {
+    .container { padding: 20px; }
+    .table-row { font-size: 0.85em; }
+    .col-date { display: none; } /* Hide date column on smallest screens */
+    .col-book { flex-basis: 50%; }
+    .col-student { flex-basis: 35%; }
+    .col-status { flex-basis: 15%; }
+    .btn.download-btn, .btn.print-btn { width: 100%; margin: 5px 0 0 0; }
+}

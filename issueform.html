@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Book Modal</title>
+    <link rel="stylesheet" href="issueform.css"> </head>
+<body>
+
+    <div class="modal-backdrop">
+        <div class="modal-container">
+
+            <div class="modal-header">
+                <h2>Issue Book</h2>
+                <button class="close-button">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <form class="issue-form">
+
+                    <div class="form-group">
+                        <label for="studentId">Student ID *</label>
+                        <input type="text" id="studentId" placeholder="Enter student ID">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bookIsbn">Book ISBN *</label>
+                        <input type="text" id="bookIsbn" placeholder="Enter book ISBN">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dueDate">Due Date *</label>
+                        <div class="date-input-container">
+                             <input type="text" id="dueDate" placeholder="mm/dd/yyyy">
+                            <span class="calendar-icon">📅</span> 
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-cancel">Cancel</button>
+                <button class="btn btn-primary">Issue Book</button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

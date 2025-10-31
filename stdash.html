@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - GGCW Library</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="stdash.css"> 
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container">
+    <img src="Pics/clglogo.png" alt="GGCW Library Logo" class="ggcw-logo">
+</div>
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="browseBooks.html">Browse Books</a></li>
+                <li><a href="Pdf.html">PDFs</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin.html">Admin Dashboard</a></li>
+                <li><a class="active" href="stdashboard.html">Student Dashboard</a></li>
+                <li><a href="donationbooks.html">Donation</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="login-btn" id="loginformBtn">Login</button>
+            <button class="register-btn" id="registerBtn">Register</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <h2>Student Dashboard</h2>
+            <p class="subtitle">Welcome back! Manage your books and library account</p>
+        </div>
+
+        <div class="stats">
+            <div class="card blue">
+                <h3>2</h3>
+                <p>Current Books</p>
+            </div>
+            <div class="card green">
+                <h3>342</h3>
+                <p>Issued Books</p>
+            </div>
+            <div class="card red">
+                <h3>28</h3>
+                <p>Overdue Books</p>
+            </div>
+            <div class="card purple">
+                <h3>856</h3>
+                <p>Total Students</p>
+            </div>
+            <div class="card orange">
+                <h3>15</h3>
+                <p>Pending Requests</p>
+            </div>
+        </div>
+
+        <section class="main-sections">
+            <div class="card issued-books">
+                <div class="card-header">
+                    <h3>Currently Issued Books</h3>
+                    <a href="index.html" class="browse-link">Browse More Books <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="book-item">
+                    <p class="book-title">Clean Code</p>
+                    <p class="book-details">by Robert C. Martin</p>
+                    <p class="book-dates">Issued: 2024-01-15 | Due: 2024-02-15</p>
+                    <p class="status-indicator remaining"><i class="fa-solid fa-check-circle"></i> 8 days remaining</p>
+                    <div class="action-group">
+                        <button class="action-btn">Renew</button>
+                        <span class="renew-detail">Renewed: 0/2</span>
+                    </div>
+                </div>
+                <div class="book-item overdue">
+                    <p class="book-title">Introduction to Algorithms</p>
+                    <p class="book-details">by Thomas H. Cormen</p>
+                    <p class="book-dates">Issued: 2024-01-10 | Due: 2024-02-10</p>
+                    <p class="status-indicator overdue-text"><i class="fa-solid fa-hand-holding-dollar"></i> 3 days overdue (Fine: $6)</p>
+                    <div class="action-group">
+                        <button class="action-btn renew-overdue">Pay Fine & Renew</button>
+                        <span class="renew-detail">Renewed: 0/2</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card pending-requests">
+                <div class="card-header">
+                    <h3>Pending Book Requests</h3>
+                </div>
+                <div class="request-item">
+                    <p class="request-title">The Great Gatsby</p>
+                    <p class="request-details">by F. Scott Fitzgerald</p>
+                    <p class="request-date">Requested: 2024-01-20</p>
+                    <span class="position-badge"><i class="fa-solid fa-list-ol"></i> Position #3 in queue</span>
+                    <button class="action-btn cancel-btn">Cancel</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="card history-section recent-activities-panel">
+            <h2>Recent Book History</h2>
+            <div class="history-table">
+                <div class="activity-item">
+                    <div class="left-content">
+                        <i class="fa-solid fa-circle-check completed-icon"></i>
+                        <div class="details">
+                            <span class="user">Psychology of Learning</span>
+                            <span class="book-details">John B. Watson • Returned: 2024-01-10</span>
+                        </div>
+                    </div>
+                    <span class="status completed">Returned</span>
+                </div>
+                <div class="activity-item">
+                    <div class="left-content">
+                        <i class="fa-solid fa-circle-check completed-icon"></i>
+                        <div class="details">
+                            <span class="user">World History</span>
+                            <span class="book-details">Roger B. Beck • Returned: 2023-12-18</span>
+                        </div>
+                    </div>
+                    <span class="status completed">Returned</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="actions">
+            <div class="action-box" onclick="window.location.href='index.html'">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <h4>Search Books</h4>
+                <p>Find books by title, author, or category</p>
+            </div>
+
+            <div class="action-box" onclick="window.location.href='issued_books.html'">
+                <i class="fa-solid fa-book-open-reader"></i>
+                <h4>My Books</h4>
+                <p>View currently issued books and due dates</p>
+            </div>
+            </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-about">
+                <h3>📘 GGCW Library</h3>
+                <p>Government Graduate College Women Library Management System. Streamline operations and enhance student learning experience.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Browse Books</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-support">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Made with Readdy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 GGCW Library Management System. All rights reserved. Built with modern technology for better library management.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("registerBtn").addEventListener("click", function () {
+            window.location.href = "register.html";
+        });
+
+        document.getElementById("loginformBtn").addEventListener("click", function () {
+            window.location.href = "loginform.html";
+        });
+    </script>
+</body>
+</html>

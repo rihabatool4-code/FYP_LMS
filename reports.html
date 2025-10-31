@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Reports - GGCW Library</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="reports.css"> 
+    <style>
+        /* Optional: Add a little extra margin to the separator if reports.css is used */
+        .page-header hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 25px 0 20px 0; /* Adjust margin to move the button down */
+        }
+    </style>
+</head>
+<body>
+
+   <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo-container">
+    <img src="Pics/clglogo.png" alt="GGCW Library Logo" class="ggcw-logo">
+</div>
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+       <li><a href="browseBooks.html">Browse Books</a></li>
+        <li><a href="Pdf.html">PDFs</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin.html">Admin Dashboard</a></li>
+        <li><a href="stdash.html">Student Dashboard</a></li>
+        <li><a href="donationbooks.html">Donation</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <button class="login-btn" id="loginformBtn">Login</button>
+      <button class="register-btn" id="registerBtn">Register</button>
+    </div>
+  </header>
+
+
+
+    <main class="container">
+        <div class="page-header">
+            <h1>Generate Reports</h1>
+            <p class="subtitle">Generate detailed library reports and statistics</p>
+            <button class="btn back-dashboard" onclick="window.location.href='admin.html'">
+                <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+            </button>
+            <hr> 
+        </div>
+        <div class="reports-content">
+            <div class="report-config-panel">
+                <h2><i class="fa-solid fa-gears"></i> Report Configuration</h2>
+                
+                <div class="config-group">
+                    <label>Report Type</label>
+                    <div class="radio-option">
+                        <input type="radio" id="issued" name="reportType" checked>
+                        <label for="issued">Issued Books</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="overdue" name="reportType">
+                        <label for="overdue">Overdue Books</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="popular" name="reportType">
+                        <label for="popular">Popular Books</label>
+                    </div>
+                </div>
+
+                <div class="config-group">
+                    <label for="dataRange">Data Range</label>
+                    <select id="dataRange" class="form-select">
+                        <option>This Month</option>
+                        <option>This Week</option>
+                        <option>Last 3 Months</option>
+                        <option>This Year</option>
+                    </select>
+                </div>
+
+                <button class="btn generate" id="generateReportBtn">
+                    <i class="fa-solid fa-chart-simple"></i> Generate Report
+                </button>
+            </div>
+
+            <div class="report-preview-panel">
+                <h2 id="reportTitle"><i class="fa-solid fa-table"></i> Issued Books Report Preview</h2>
+
+                <div class="preview-table" id="reportTable">
+                    <div class="table-row header" id="tableHeader">
+                        <div class="col-book">Book</div>
+                        <div class="col-student">Student</div>
+                        <div class="col-date">Issue Date</div>
+                        <div class="col-status">Status</div>
+                    </div>
+                    
+                    <div class="data-rows-container">
+                        <div class="table-row data">
+                            <div class="col-book">Clean Code</div>
+                            <div class="col-student">Sarah Johnson</div>
+                            <div class="col-date">2024. 01. 15</div>
+                            <div class="col-status"><span class="badge status-active">Active</span></div>
+                        </div>
+                        <div class="table-row data">
+                            <div class="col-book">Introduction to Algorithms</div>
+                            <div class="col-student">Mike Chen</div>
+                            <div class="col-date">2024. 01. 10</div>
+                            <div class="col-status"><span class="badge status-overdue">Overdue</span></div>
+                        </div>
+                        <div class="table-row data">
+                            <div class="col-book">Psychology of Learning</div>
+                            <div class="col-student">Emma Wilson</div>
+                            <div class="col-date">2024. 01. 20</div>
+                            <div class="col-status"><span class="badge status-returned">Returned</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-about">
+                <h3>GGCW Library</h3>
+                <p>Government Graduate College Women Library Management System. Streamline operations and enhance student learning experience.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="index.html">Browse Books</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-support">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="loginform.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Made with Ready</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2024 GGCW Library Management System. All rights reserved. Built with modern technology.
+        </div>
+    </footer>
+
+    <script>
+        // Navigation buttons logic
+        document.getElementById("registerBtn").addEventListener("click", function () {
+            window.location.href = "register.html";
+        });
+
+        document.getElementById("loginformBtn").addEventListener("click", function () {
+            window.location.href = "loginform.html";
+        });
+
+        // Report Dynamic Update Logic
+        const reportRadios = document.querySelectorAll('input[name="reportType"]');
+        const generateButton = document.getElementById('generateReportBtn');
+        const dataRangeSelect = document.getElementById('dataRange');
+        const reportTitle = document.getElementById('reportTitle');
+        const tableHeader = document.getElementById('tableHeader');
+        const dataContainer = document.querySelector('.data-rows-container');
+
+        // Dummy Data for demonstration
+        const sampleData = {
+            'issued': {
+                title: 'Issued Books Report Preview',
+                headerCols: ['Book', 'Student', 'Issue Date', 'Status'],
+                rows: [
+                    { book: 'Clean Code', student: 'Sarah Johnson', date: '2024. 01. 15', status: 'Active' },
+                    { book: 'Introduction to Algorithms', student: 'Mike Chen', date: '2024. 01. 10', status: 'Overdue' },
+                    { book: 'Psychology of Learning', student: 'Emma Wilson', date: '2024. 01. 20', status: 'Returned' }
+                ]
+            },
+            'overdue': {
+                title: 'Overdue Books Report Preview',
+                headerCols: ['Book', 'Student ID', 'Due Date', 'Fine'],
+                rows: [
+                    { book: 'Operating Systems Concepts', student: 'Ali Raza', date: '2024. 12. 25', status: '₹ 50' },
+                    { book: 'The Great Gatsby', student: 'Fatima Zafar', date: '2024. 01. 01', status: '₹ 100' },
+                    { book: 'Calculus: Early Transcendentals', student: 'Zain Malik', date: '2024. 01. 10', status: '₹ 20' }
+                ]
+            },
+            'popular': {
+                title: 'Popular Books Report Preview',
+                headerCols: ['Book Title', 'Author', 'Category', 'Times Issued'],
+                rows: [
+                    { book: 'Atomic Habits', student: 'James Clear', date: 'Self-Help', status: '150' },
+                    { book: 'Sapiens', student: 'Yuval Noah Harari', date: 'History', status: '120' },
+                    { book: 'The Alchemist', student: 'Paulo Coelho', date: 'Fiction', status: '110' }
+                ]
+            }
+        };
+
+        /**
+         * Finds the currently selected report type ID.
+         * @returns {string} - The ID ('issued', 'overdue', 'popular').
+         */
+        function getSelectedReportType() {
+            const checkedRadio = document.querySelector('input[name="reportType"]:checked');
+            return checkedRadio ? checkedRadio.id : 'issued';
+        }
+
+        /**
+         * Updates the report preview panel based on the selected report type.
+         * @param {string} reportType - The ID of the selected report type.
+         */
+        function updateReportPreview(reportType) {
+            const data = sampleData[reportType];
+            
+            // 1. Update Title
+            reportTitle.innerHTML = `<i class="fa-solid fa-table"></i> ${data.title}`;
+
+            // 2. Update Table Header Columns
+            tableHeader.innerHTML = `
+                <div class="col-book">${data.headerCols[0]}</div>
+                <div class="col-student">${data.headerCols[1]}</div>
+                <div class="col-date">${data.headerCols[2]}</div>
+                <div class="col-status">${data.headerCols[3]}</div>
+            `;
+
+            // 3. Update Table Data Rows
+            dataContainer.innerHTML = ''; // Clear existing rows
+            data.rows.forEach(row => {
+                let statusBadge = '';
+                let statusClass = '';
+
+                // Logic to apply appropriate badge styling
+                if (reportType === 'issued') {
+                    if (row.status === 'Active') {
+                        statusClass = 'status-active';
+                    } else if (row.status === 'Overdue') {
+                        statusClass = 'status-overdue';
+                    } else {
+                        statusClass = 'status-returned';
+                    }
+                    statusBadge = `<span class="badge ${statusClass}">${row.status}</span>`;
+                } else if (reportType === 'overdue') {
+                    // For Overdue, status shows fine amount, using overdue styling
+                    statusBadge = `<span class="badge status-overdue">${row.status}</span>`;
+                } else if (reportType === 'popular') {
+                    // For Popular, status shows issue count, using active styling
+                    statusBadge = `<span class="badge status-active">${row.status}</span>`; 
+                }
+                
+                const newRow = document.createElement('div');
+                newRow.classList.add('table-row', 'data');
+                newRow.innerHTML = `
+                    <div class="col-book">${row.book}</div>
+                    <div class="col-student">${row.student}</div>
+                    <div class="col-date">${row.date}</div>
+                    <div class="col-status">${statusBadge}</div>
+                `;
+                dataContainer.appendChild(newRow);
+            });
+        }
+
+        // --- Event Listeners ---
+
+        // 1. Radio Button Change: Quick preview update
+        reportRadios.forEach(radio => {
+            radio.addEventListener('change', (event) => {
+                if (event.target.checked) {
+                    updateReportPreview(event.target.id);
+                }
+            });
+        });
+
+        // 2. Generate Report Button Click: Triggers filtered report load
+        generateButton.addEventListener('click', () => {
+            const selectedReport = getSelectedReportType();
+            const selectedRange = dataRangeSelect.value;
+            
+            // SIMULATION: Log the filters (in a real app, this sends data to the server)
+            console.log(`--- GENERATING REPORT ---`);
+            console.log(`Report Type: ${selectedReport.toUpperCase()}`);
+            console.log(`Data Range: ${selectedRange}`);
+            console.log(`-------------------------`);
+
+            // Re-load the preview to simulate the action completed.
+            updateReportPreview(selectedReport);
+            
+            // Visual feedback
+            generateButton.innerHTML = `<i class="fa-solid fa-check"></i> Report Generated!`;
+            setTimeout(() => {
+                generateButton.innerHTML = `<i class="fa-solid fa-chart-simple"></i> Generate Report`;
+            }, 1500);
+        });
+
+        // Initial load: Ensure the correct report is loaded on page open
+        updateReportPreview(getSelectedReportType()); 
+    </script>
+</body>
+</html>

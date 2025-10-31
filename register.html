@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - GGCW Library</title>
+  <link rel="stylesheet" href="register.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="container">
+    <form class="form-box" onsubmit="return validation()" action="loginSave.php" method="POST">
+      <h1>Create Account</h1>
+      <p>Join GGCW Library and access thousands of books</p>
+
+      <div class="row">
+        <input type="text" name="name" placeholder="Enter your Name" required>
+        <select name="usertype" required>
+          <option value="" disabled selected>User Type</option>
+          <option>Staff</option>
+          <option>Student</option>
+        </select>
+      </div>
+
+      <input type="email" id="email" placeholder="Email Address" name="email" required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        title="Enter a valid email address (e.g., user@example.com)">
+
+      <div class="row">
+        <input type="text" name="rollno" placeholder="Student ID" required>
+        <input type="text" id="mobile" placeholder="Phone Number" name="mobile"
+          pattern="[0-9]{11}"
+          title="Enter a 11-digit mobile number only" required>
+      </div>
+
+      <div class="row">
+        <select name="semester" required>
+          <option value="" disabled selected>Select Semester</option>
+          <option>First</option>
+          <option>Second</option>
+          <option>Third</option>
+          <option>Fourth</option>
+          <option>Fifth</option>
+          <option>Sixth</option>
+          <option>Seventh</option>
+          <option>Eighth</option>
+        </select>
+        <select name="department" required>
+          <option value="" disabled selected>Select Department</option>
+          <option>Computer Science</option>
+          <option>Literature</option>
+          <option>Science</option>
+          <option>Mathematics</option>
+          <option>History</option>
+          <option>Psychology</option>
+          <option>Business</option>
+          <option>Arts</option>
+        </select>
+      </div>
+
+      <input type="password" id="pass1" placeholder="Create a Password" name="pass1"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        title="must contain at least one number, one uppercase, one lowercase, and at least 8 characters." required>
+      
+      <input type="password" id="pass2" placeholder="Confirm your password" name="pass2"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        title="must contain at least one number, one uppercase, one lowercase, and at least 8 characters." required>
+
+      <div class="checkbox">
+        <input type="checkbox" required>
+        <label>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+      </div>
+
+      <button type="submit">Submit</button>
+
+      <p class="login-text">Already have an account? <a href="#">Sign in here</a></p>
+    </form>
+  </div>
+
+  <script>
+    function validation() {
+        var email = document.getElementById("email").value;
+        var mobile = document.getElementById("mobile").value;
+        var pass1 = document.getElementById("pass1").value;
+        var pass2 = document.getElementById("pass2").value;
+        
+        // Validate email format
+        var emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+        if (!emailPattern.test(email)) {
+            alert("Invalid email format");
+            return false;
+        }
+
+        // Validate mobile number (must be exactly 11 digits)
+        var mobilePattern = /^[0-9]{11}$/;
+        if (!mobilePattern.test(mobile)) {
+            alert("Mobile number must be exactly 11 digits");
+            return false;
+        }
+
+        // Validate password match
+        if (pass1 !== pass2) {
+            alert("Password and confirmation password do not match");
+            return false;
+        }
+
+        return true;  // Proceed with form submission if all conditions are met
+    }
+  </script>
+</body>
+</html>

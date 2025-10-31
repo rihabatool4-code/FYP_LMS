@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Issued & Returned Books - GGCW Library</title>
+  <link rel="stylesheet" href="issuebook.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+   <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo-container">
+    <img src="Pics/clglogo.png" alt="GGCW Library Logo" class="ggcw-logo">
+</div>
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+       <li><a href="browseBooks.html">Browse Books</a></li>
+        <li><a href="Pdf.html">PDFs</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin.html">Admin Dashboard</a></li>
+        <li><a href="stdash.html">Student Dashboard</a></li>
+        <li><a href="donationbooks.html">Donation</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <button class="login-btn" id="loginformBtn">Login</button>
+      <button class="register-btn" id="registerBtn">Register</button>
+    </div>
+  </header>
+
+  <main>
+    <h2>Issued & Returned Books</h2>
+    <p class="subtitle">Manage book issues and returns</p>
+
+    <div class="stats">
+      <div class="stat-card blue"> 
+        <h3>3</h3>
+        <p>Total Issued</p>
+      </div>
+      <div class="stat-card red"> 
+        <h3>1</h3>
+        <p>Overdue Books</p>
+      </div>
+      <div class="stat-card green"> 
+        <h3>$25</h3>
+        <p>Total Fines</p>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <a href="admin.html">
+        <button class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Dashboard</button>
+      </a>
+      <button class="issue-btn" id="openModal"><i class="fa-solid fa-plus"></i> Issue Book</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Book Details</th>
+          <th>Issue Date</th>
+          <th>Due Date</th>
+          <th>Status</th>
+          <th>Fine</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Student">Sarah Johnson<br><small>ID: ST001</small></td>
+          <td data-label="Book Details"><strong>Clean Code</strong><br><small>by Robert C. Martin<br>ISBN: 978 0132350884</small></td>
+          <td data-label="Issue Date">2024-01-15</td>
+          <td data-label="Due Date">2024-02-15</td>
+          <td data-label="Status"><span class="status active">Active</span></td>
+          <td data-label="Fine">$0</td>
+          <td data-label="Actions" class="actions">
+            <i class="fa-solid fa-check return" title="Return Book"></i>
+            <i class="fa-solid fa-trash delete" title="Delete Issue"></i>
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Student">Mike Chen<br><small>ID: ST002</small></td>
+          <td data-label="Book Details"><strong>Introduction to Algorithms</strong><br><small>by Thomas H. Cormen<br>ISBN: 978 0262033848</small></td>
+          <td data-label="Issue Date">2024-01-10</td>
+          <td data-label="Due Date">2024-02-10</td>
+          <td data-label="Status"><span class="status overdue">Overdue</span></td>
+          <td data-label="Fine">$25</td>
+          <td data-label="Actions" class="actions">
+            <i class="fa-solid fa-check return" title="Return Book"></i>
+            <i class="fa-solid fa-trash delete" title="Delete Issue"></i>
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Student">Emma Wilson<br><small>ID: ST003</small></td>
+          <td data-label="Book Details"><strong>Psychology of Learning</strong><br><small>by John B. Watson<br>ISBN: 978 0260583633</small></td>
+          <td data-label="Issue Date">2024-01-20</td>
+          <td data-label="Due Date">2024-02-20</td>
+          <td data-label="Status"><span class="status active">Active</span></td>
+          <td data-label="Fine">$0</td>
+          <td data-label="Actions" class="actions">
+            <i class="fa-solid fa-check return" title="Return Book"></i>
+            <i class="fa-solid fa-trash delete" title="Delete Issue"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+<div id="issueModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <h3>Issue Book</h3>
+    <form class="issue-form">
+
+      <div class="form-group">
+        <label for="studentId">Student ID *</label>
+        <input type="text" id="studentId" placeholder="Enter student ID">
+      </div>
+
+      <div class="form-group">
+        <label for="bookIsbn">Book ISBN *</label>
+        <input type="text" id="bookIsbn" placeholder="Enter book ISBN">
+      </div>
+
+      <div class="form-group">
+        <label for="dueDate">Due Date *</label>
+        <input type="date" id="dueDate" placeholder="mm/dd/yyyy">
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status *</label>
+        <select id="status">
+          <option value="active">Active</option>
+          <option value="overdue">Overdue</option>
+          <option value="returned">Returned</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="cancel-btn" id="cancelBtn">Cancel</button>
+        <button type="submit" class="submit-btn">Issue Book</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+  
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-about">
+        <h3>📘 GGCW Library</h3>
+        <p>Government Graduate College Women Library Management System. Streamline operations and enhance student learning experience.</p>
+        <div class="footer-socials">
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Browse Books</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Help Center</a></li>
+        </ul>
+      </div>
+      <div class="footer-support">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Register</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Made with Readdy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 GGCW Library Management System. All rights reserved. Built with modern technology for better library management.</p>
+    </div>
+  </footer>
+
+  <script>
+    const modal = document.getElementById("issueModal");
+    const openModal = document.getElementById("openModal");
+    const closeModal = document.getElementById("closeModal");
+    const cancelBtn = document.getElementById("cancelBtn");
+
+    // Function to close modal with animation
+    const closeTheModal = () => {
+        const modalContent = document.querySelector("#issueModal .modal-content");
+        modalContent.style.transform = "scale(0.9)";
+        modalContent.style.opacity = "0";
+        // Delay display: none until animation finishes (400ms = 0.4s)
+        setTimeout(() => {
+            modal.style.display = "none";
+            modalContent.style.transform = "scale(0.9)"; // Reset for next open
+            modalContent.style.opacity = "0"; 
+        }, 400); 
+    };
+
+    openModal.onclick = () => modal.style.display = "block";
+    closeModal.onclick = closeTheModal;
+    cancelBtn.onclick = closeTheModal;
+    
+    // Close modal if user clicks outside of it
+    window.onclick = (e) => { 
+        if (e.target == modal) closeTheModal(); 
+    };
+
+    // Navigation buttons
+     document.getElementById("registerBtn").addEventListener("click", function () {
+      window.location.href = "register.html";
+    });
+
+    document.getElementById("loginformBtn").addEventListener("click", function () {
+      window.location.href = "loginform.html";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,528 @@
+/* General Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f7fa; /* Light background for a soft look */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    color: #1a237e; /* Deep blue for headings */
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #4a148c; /* Purple for links */
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px 15px 60px; /* Top, Right, Bottom, Left */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  animation: slideDown 0.5s ease-out;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* --- NEW LOGO STYLES FOR IMAGE UPLOAD --- */
+
+/* Ensures the logo container doesn't force a specific shape or background, 
+   just acts as a flex container */
+.logo-container {
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start; /* Align left */
+    height: 50px; /* Set a standard height for the logo area */
+    transition: all 0.3s ease;
+}
+
+/* Styles the actual logo image */
+.ggcw-logo {
+    height: 150%; /* Make the image fill the height of the container */
+    width: auto; /* Allow the width to scale proportionally */
+    object-fit: contain;
+    padding: 5px 0; /* Optional: Add slight vertical padding if needed */
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.ggcw-logo:hover {
+    transform: scale(1.05); /* Add a slight zoom effect on hover */
+}
+/* --- END NEW LOGO STYLES --- */
+
+.navbar .logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #2a62ff;
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+  width: 100%;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: #2a62ff;
+}
+
+.auth-buttons button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-buttons button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.auth-buttons button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.login-btn {
+  background: transparent;
+  color:  #2a62ff;
+  border: 2px solid #2a62ff;
+}
+
+.login-btn:hover {
+  background:  #2a62ff;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(42, 98, 255, 0.3);
+}
+
+.register-btn {
+  background:  #2a62ff;
+  color: white;
+}
+
+.register-btn:hover {
+  background:  #2a62ff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(42, 98, 255, 0.4);
+}
+/* Hero Section */
+.hero-contact {
+    /* UPDATED: Path to a library image */
+    background: url('https://educationsnapshots.com/wp-content/uploads/sites/4/2023/11/al-faisal-college-library-4.jpg') no-repeat center center/cover; /* Replace with an actual image URL */
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.hero-contact h1 {
+    color: white;
+    font-size: 3em;
+    margin-bottom: 5px;
+}
+
+/* Contact Sections Layout */
+.contact-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 20px 0;
+}
+
+/* Get In Touch (Cards) */
+.get-in-touch {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.section-subtitle {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.contact-cards {
+    /* UPDATED: Changed grid to 3 columns since one card is removed */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.contact-card {
+    text-align: center;
+    padding: 20px 10px;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px); /* Lift animation */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.contact-card i {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.phone-card { background-color: #e8eaf6; }
+.phone-card i { color: #3f51b5; }
+
+.email-card { background-color: #e0f7fa; }
+.email-card i { color: #00bcd4; }
+
+.address-card { background-color: #f3e5f5; }
+.address-card i { color: #9c27b0; }
+
+/* The .hours-card styling is no longer directly used in .contact-cards */
+
+.details-link {
+    font-size: 0.9em;
+    color: #5e35b1;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* Send a Message (Form) */
+.send-message {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.form-group, .form-group-half {
+    margin-bottom: 15px;
+}
+
+.form-group-half {
+    display: flex;
+    gap: 15px;
+}
+
+input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: #5e35b1;
+    box-shadow: 0 0 5px rgba(94, 53, 177, 0.3);
+    outline: none;
+}
+
+.send-button {
+    width: 100%;
+    background-color: #5e35b1;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.send-button:hover {
+    background-color: #4527a0;
+    transform: scale(1.02);
+}
+
+/* Library Hours Section */
+.library-hours-section {
+    background-color: #4a148c; /* Darker blue/purple background */
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.library-hours-section h2 {
+    color: white;
+    margin-bottom: 5px;
+}
+
+.library-hours-section p {
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.library-hours-container {
+    padding: 0 20px;
+}
+
+.hours-content {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.hours-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 10px;
+    width: 45%;
+    text-align: left;
+    transition: background-color 0.3s;
+}
+
+.hours-card:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.hours-card h3 {
+    color: #ffeb3b; /* Yellow accent */
+    margin-bottom: 15px;
+}
+
+.hours-card ul {
+    list-style: none;
+}
+
+.hours-card ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hours-card ul li:last-child {
+    border-bottom: none;
+}
+
+.hours-card .day {
+    font-weight: 700;
+    display: inline-block;
+    width: 120px;
+}
+
+.hours-card i {
+    margin-right: 5px;
+}
+
+/* Find Us Section */
+.find-us-section {
+    padding: 60px 0;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 400px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Ensure map doesn't spill out of border-radius */
+}
+
+.map-placeholder iframe {
+    border-radius: 10px; /* Match parent's border-radius */
+}
+
+.location-details {
+    display: flex;
+    justify-content: flex-start; /* Align to start since only one box now */
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.address-box { /* .transport-box is removed, so only .address-box remains */
+    background-color: #fff;
+    padding: 20px;
+    border-left: 5px solid #5e35b1;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Allow it to take available space */
+    max-width: 500px; /* Prevent it from stretching too wide if only one item */
+}
+
+.address-box p {
+    margin-bottom: 5px;
+}
+
+
+/* Footer */
+.main-footer {
+    background-color: #1a237e; /* Same as main heading color */
+    color: white;
+    padding: 30px 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+}
+
+.footer-logo {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links h4, .footer-social h4 {
+    color: #ffeb3b;
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #ccc;
+    display: block;
+    padding: 3px 0;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-social a {
+    color: white;
+    font-size: 1.5em;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: #ffeb3b;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .contact-sections {
+        grid-template-columns: 1fr; /* Stack on smaller screens */
+    }
+    
+    .contact-cards {
+        grid-template-columns: 1fr; /* Stack contact cards */
+    }
+    
+    .hours-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hours-card {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .location-details {
+        flex-direction: column;
+    }
+    
+    .address-box {
+        max-width: 100%; /* Allow address box to take full width */
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+    }
+    .main-nav ul {
+        padding: 10px 0;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-social {
+        margin-top: 15px;
+    }
+}

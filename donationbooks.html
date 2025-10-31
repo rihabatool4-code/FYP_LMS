@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Book Donation Management - GGCW Library</title>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="donationbooks.css">
+
+   
+</head>
+<body>
+     <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo-container">
+    <img src="Pics/clglogo.png" alt="GGCW Library Logo" class="ggcw-logo">
+</div>
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+       <li><a  href="browseBooks.html">Browse Books</a></li>
+        <li><a href="Pdf.html">PDFs</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin.html">Admin Dashboard</a></li>
+        <li><a href="stdash.html">Student Dashboard</a></li>
+        <li><a class="active" href="donationbooks.html">Donation</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <button class="login-btn" id="loginformBtn">Login</button>
+      <button class="register-btn" id="registerBtn">Register</button>
+    </div>
+  </header>
+
+    <main>
+        <h2>Book Donation Management</h2>
+        <p class="subtitle">Donate books and help grow our library collection</p>
+
+        <!-- Role switch -->
+        <div class="role-switcher">
+            <button class="role-btn active" onclick="switchRole('student', event)">
+                <i class="fas fa-user-graduate"></i> Student View
+            </button>
+            <button class="role-btn" onclick="switchRole('admin', event)">
+                <i class="fas fa-user-shield"></i> Admin Panel
+            </button>
+        </div>
+
+        <!-- Stats (admin only) -->
+        <div class="stats" id="statsSection" style="display:none;">
+            <div class="card blue"><h3 id="pendingCount">0</h3><p>Pending Donations</p></div>
+            <div class="card green"><h3 id="approvedCount">0</h3><p>Approved Books</p></div>
+            <div class="card red"><h3 id="rejectedCount">0</h3><p>Rejected Requests</p></div>
+            <div class="card purple"><h3 id="totalCount">0</h3><p>Total Donations</p></div>
+        </div>
+
+        <!-- Section header -->
+        <div class="section-header">
+            <h3 id="sectionTitle">My Donations</h3>
+            <button class="btn-primary" onclick="openDonateModal()" id="donateBtn"><i class="fas fa-plus-circle"></i> Donate a Book</button>
+        </div>
+
+        <!-- Search & filter -->
+        <div class="search-filter" id="filterSection">
+            <div class="search-box">
+                <input type="text" placeholder="Search by title, author, or donor..." id="searchInput" oninput="filterDonations()">
+                <i class="fas fa-search"></i>
+            </div>
+            <select class="filter-select" id="statusFilter" onchange="filterDonations()">
+                <option value="all">All Status</option>
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+            </select>
+        </div>
+
+        <!-- Donations grid -->
+        <div class="donations-grid" id="donationsGrid">
+            <div class="empty-state">
+                <i class="fas fa-book-heart"></i>
+                <h3>No donations yet</h3>
+                <p>Be the first to donate a book to the library!</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Donate Modal -->
+    <div class="modal" id="donateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-gift"></i> Donate a Book</h3>
+                <button class="close-btn" onclick="closeDonateModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="donationForm" onsubmit="submitDonation(event)">
+                <div class="form-group">
+                    <label>Name *</label>
+                    <input type="text" id="Name" required placeholder="Enter donor's name">
+                    <label>Book Title *</label>
+                    <input type="text" id="bookTitle" required placeholder="Enter book title">
+                </div>
+                <div class="form-group">
+                    <label>Author Name *</label>
+                    <input type="text" id="authorName" required placeholder="Enter author name">
+                </div>
+                <div class="form-group">
+                    <label>ISBN (Optional)</label>
+                    <input type="text" id="isbn" placeholder="Enter ISBN number">
+                </div>
+                <div class="form-group">
+                    <label>Category *</label>
+                    <select id="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Biology">Biology</option>
+                        <option value="English Literature">English Literature</option>
+                        <option value="Islamic Studies">Islamic Studies</option>
+                        <option value="History">History</option>
+                        <option value="Economics">Economics</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Book Condition *</label>
+                    <select id="condition" required>
+                        <option value="">Select Condition</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Additional Notes</label>
+                    <textarea id="notes" placeholder="Any additional information about the book..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width:100%"><i class="fas fa-paper-plane"></i> Submit Donation</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Details Modal -->
+    <div class="modal" id="detailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-info-circle"></i> Donation Details</h3>
+                <button class="close-btn" onclick="closeDetailsModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="detailsContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // state
+        let currentRole = 'student';
+        let donations = [];
+
+        // sample data (you can remove or replace)
+        function initializeSampleData() {
+            donations = [
+                {
+                    id: 1,
+                    title: "Data Structures and Algorithms",
+                    author: "Robert Lafore",
+                    isbn: "978-0672324536",
+                    category: "Computer Science",
+                    condition: "Excellent",
+                    donor: "Reha Batool",
+                    rollNo: "092809",
+                    date: "2025-10-15",
+                    status: "pending",
+                    notes: "Complete edition with all chapters intact"
+                },
+                {
+                    id: 2,
+                    title: "Introduction to Algorithms",
+                    author: "Thomas H. Cormen",
+                    isbn: "978-0262033848",
+                    category: "Computer Science",
+                    condition: "Good",
+                    donor: "Maryam Mushtaq",
+                    rollNo: "092812",
+                    date: "2025-10-18",
+                    status: "approved",
+                    notes: "Third edition, minimal wear"
+                },
+                {
+                    id: 3,
+                    title: "Pride and Prejudice",
+                    author: "Jane Austen",
+                    isbn: "978-0141439518",
+                    category: "English Literature",
+                    condition: "Fair",
+                    donor: "Esha Aslam",
+                    rollNo: "092827",
+                    date: "2025-10-20",
+                    status: "pending",
+                    notes: "Classic edition with annotations"
+                }
+            ];
+            renderDonations();
+            updateStats();
+        }
+
+        // auth placeholders
+        function handleLogin(){ alert('🔐 Redirecting to Login Page... (connect to your login page)'); }
+        function handleRegister(){ alert('📝 Redirecting to Registration Page... (connect to your register page)'); }
+
+        // switch role (student/admin). event passed from onclick
+        function switchRole(role, ev) {
+            currentRole = role;
+            document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
+            const btn = ev?.target.closest('.role-btn');
+            if (btn) btn.classList.add('active');
+
+            const statsSection = document.getElementById('statsSection');
+            const donateBtn = document.getElementById('donateBtn');
+            const sectionTitle = document.getElementById('sectionTitle');
+
+            if (role === 'admin') {
+                statsSection.style.display = 'grid';
+                donateBtn.style.display = 'none';
+                sectionTitle.textContent = 'All Donations';
+            } else {
+                statsSection.style.display = 'none';
+                donateBtn.style.display = 'inline-flex';
+                sectionTitle.textContent = 'My Donations';
+            }
+            renderDonations();
+        }
+
+        // modals
+        function openDonateModal(){ document.getElementById('donateModal').classList.add('active'); }
+        function closeDonateModal(){ document.getElementById('donateModal').classList.remove('active'); }
+        function closeDetailsModal(){ document.getElementById('detailsModal').classList.remove('active'); }
+
+        // details modal content
+        function openDetailsModal(donation) {
+            const content = document.getElementById('detailsContent');
+            content.innerHTML = `
+                <div class="detail-item"><div class="detail-label">Title</div><div class="detail-value">${donation.title}</div></div>
+                <div class="detail-item"><div class="detail-label">Author</div><div class="detail-value">${donation.author}</div></div>
+                <div class="detail-item"><div class="detail-label">ISBN</div><div class="detail-value">${donation.isbn || 'N/A'}</div></div>
+                <div class="detail-item"><div class="detail-label">Category</div><div class="detail-value">${donation.category}</div></div>
+                <div class="detail-item"><div class="detail-label">Condition</div><div class="detail-value">${donation.condition}</div></div>
+                <div class="detail-item"><div class="detail-label">Donor</div><div class="detail-value">${donation.donor}</div></div>
+                <div class="detail-item"><div class="detail-label">Date</div><div class="detail-value">${donation.date}</div></div>
+                <div class="detail-item"><div class="detail-label">Status</div><div class="detail-value">${donation.status.toUpperCase()}</div></div>
+                <div class="detail-item"><div class="detail-label">Notes</div><div class="detail-value">${donation.notes || 'None'}</div></div>
+            `;
+            document.getElementById('detailsModal').classList.add('active');
+        }
+
+        // submit donation (front-end only). Replace with AJAX or form action to save to backend.
+        function submitDonation(e) {
+            e.preventDefault();
+            const newDonation = {
+                id: donations.length ? (Math.max(...donations.map(d=>d.id)) + 1) : 1,
+                title: document.getElementById('bookTitle').value.trim(),
+                author: document.getElementById('authorName').value.trim(),
+                isbn: document.getElementById('isbn').value.trim(),
+                category: document.getElementById('category').value,
+                condition: document.getElementById('condition').value,
+                donor: "Reha Batool",       // replace with logged-in user's name
+                rollNo: "092809",           // replace with logged-in user's roll number
+                date: new Date().toISOString().split('T')[0],
+                status: "pending",
+                notes: document.getElementById('notes').value.trim()
+            };
+
+            // basic validation already handled by required attributes, but double-check:
+            if (!newDonation.title || !newDonation.author || !newDonation.category || !newDonation.condition) {
+                alert('Please fill all required fields.');
+                return;
+            }
+
+            donations.push(newDonation);
+            closeDonateModal();
+            document.getElementById('donationForm').reset();
+            updateStats();
+            renderDonations();
+            alert('✅ Donation submitted successfully! (This is saved only in the browser right now.)');
+        }
+
+        // approve/reject (admin actions)
+        function updateStatus(id, newStatus) {
+            const d = donations.find(x => x.id === id);
+            if (!d) return;
+            d.status = newStatus;
+            updateStats();
+            renderDonations();
+        }
+
+        // filtering / search
+        function filterDonations() {
+            renderDonations();
+        }
+
+        // render donations into grid
+        function renderDonations() {
+            const grid = document.getElementById('donationsGrid');
+            const searchTerm = (document.getElementById('searchInput').value || '').toLowerCase();
+            const statusFilter = (document.getElementById('statusFilter').value || 'all');
+
+            let filtered = donations.filter(d => {
+                const matchesSearch =
+                    d.title.toLowerCase().includes(searchTerm) ||
+                    d.author.toLowerCase().includes(searchTerm) ||
+                    d.donor.toLowerCase().includes(searchTerm);
+                const matchesStatus = (statusFilter === 'all') || (d.status === statusFilter);
+                return matchesSearch && matchesStatus;
+            });
+
+            if (currentRole === 'student') {
+                // show only donations by this student (hardcoded rollNo in demo)
+                filtered = filtered.filter(d => d.rollNo === '092809');
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-book-heart"></i>
+                        <h3>No donations found</h3>
+                        <p>${currentRole === 'student' ? "You haven't donated any books yet." : "No donations match your filters."}</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // build cards
+            grid.innerHTML = filtered.map((donation, index) => {
+                // status badge class
+                const statusClass = donation.status === 'pending' ? 'pending' : (donation.status === 'approved' ? 'approved' : 'rejected');
+
+                // action buttons for admin
+                const adminButtons = currentRole === 'admin' ? `
+                    <button class="action-btn approve" title="Approve" onclick='updateStatus(${donation.id}, "approved")'>
+                        <i class="fas fa-check"></i>
+                    </button>
+                    <button class="action-btn reject" title="Reject" onclick='updateStatus(${donation.id}, "rejected")'>
+                        <i class="fas fa-times"></i>
+                    </button>` : '';
+
+                // JSON-safe string for opening details modal
+                const donationJson = JSON.stringify(donation).replaceAll("'", "\\'");
+
+                return `
+                    <div class="donation-card" style="animation-delay: ${0.9 + index * 0.05}s;">
+                        <div class="donation-left">
+                            <img src="https://via.placeholder.com/80x100/2a62ff/ffffff?text=Book" alt="Book" class="book-image">
+                            <div class="book-info">
+                                <h4>${escapeHtml(donation.title)}</h4>
+                                <p><strong>Author:</strong> ${escapeHtml(donation.author)}</p>
+                                <p><strong>Category:</strong> ${escapeHtml(donation.category)}</p>
+                                <div class="book-meta">
+                                    <span class="meta-item"><i class="fas fa-user"></i> ${escapeHtml(donation.donor)}</span>
+                                    <span class="meta-item"><i class="fas fa-calendar"></i> ${escapeHtml(donation.date)}</span>
+                                    <span class="meta-item"><i class="fas fa-star"></i> ${escapeHtml(donation.condition)}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="donation-right">
+                            <span class="status-badge ${statusClass}">${donation.status.toUpperCase()}</span>
+                            <div class="action-buttons">
+                                <button class="action-btn view" title="View Details" onclick='openDetailsModal(${donationJson})'>
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                ${adminButtons}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // update dashboard stats
+        function updateStats() {
+            document.getElementById('pendingCount').textContent = donations.filter(d => d.status === 'pending').length;
+            document.getElementById('approvedCount').textContent = donations.filter(d => d.status === 'approved').length;
+            document.getElementById('rejectedCount').textContent = donations.filter(d => d.status === 'rejected').length;
+            document.getElementById('totalCount').textContent = donations.length;
+        }
+
+        // small helper to avoid HTML injection in displayed fields
+        function escapeHtml(str) {
+            if (!str && str !== 0) return '';
+            return String(str)
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#039;');
+        }
+
+        // init
+        window.onload = initializeSampleData;
+
+         document.getElementById("registerBtn").addEventListener("click", function () {
+      window.location.href = "register.html";
+    });
+
+    document.getElementById("loginformBtn").addEventListener("click", function () {
+      window.location.href = "loginform.html";
+    });
+    </script>
+</body>
+</html>

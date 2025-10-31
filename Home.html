@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GGCW Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+   <link rel="stylesheet" href="Home.css" />
+
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo-container">
+    <img src="Pics/clglogo.png" alt="GGCW Library Logo" class="ggcw-logo">
+</div>
+    <nav>
+      <ul>
+        <li><a class="active" href="Home.html">Home</a></li>
+       <li><a href="browseBooks.html">Browse Books</a></li>
+        <li><a href="Pdf.html">PDFs</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin.html">Admin Dashboard</a></li>
+        <li><a href="stdash.html">Student Dashboard</a></li>
+        <li><a href="donationbooks.html">Donation</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <button class="login-btn" id="loginformBtn">Login</button>
+      <button class="register-btn" id="registerBtn">Register</button>
+    </div>
+  </header>
+
+
+  <section class="hero">
+    <div class="slideshow-container">
+     <img src="Pics/logo5.jpg" class="slide" alt="GGCW Building" />
+          <img src="Pics/logo5.jpg" class="slide" alt="GGCW Building" />
+          <img src="Pics/logo8.PNG" class="slide" alt="GGCW Building" />
+          <img src="Pics/logo7.PNG" class="slide" alt="GGCW Building" />
+    </div>
+    <div class="hero-overlay">
+      <h1>GGCW Library <span>Management System</span></h1>
+      <p>
+        Government Graduate College Women digital library system. 
+        Streamline book management and enhance the learning experience for students and faculty.
+      </p>
+     <div class="hero-buttons">
+    <a href="register.html" class="btn-primary">Get Started Today</a> 
+    <a href="browseBooks.html" class="btn-secondary">Borrow Books</a>
+</div>
+    </div>
+  </section>
+
+  <section class="popular-books">
+    <h2>Popular Books</h2>
+    <p class="subtitle">Explore our most sought-after collection</p>
+    
+    <div class="books-slider-container">
+      <div class="books-slider" id="booksSlider">
+        <div class="book-card">
+          <span class="book-status">Available</span>
+          <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&q=80" alt="Clean Code" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">Clean Code</h3>
+            <p class="book-author">by Robert C. Martin</p>
+            <p class="book-category">Computer Science</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <span class="book-status issued">Issued</span>
+          <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&q=80" alt="To Kill a Mockingbird" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">To Kill a Mockingbird</h3>
+            <p class="book-author">by Harper Lee</p>
+            <p class="book-category">Literature</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <span class="book-status">Available</span>
+          <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&q=80" alt="Introduction to Algorithms" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">Introduction to Algorithms</h3>
+            <p class="book-author">by Thomas H. Cormen</p>
+            <p class="book-category">Computer Science</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <span class="book-status">Available</span>
+          <img src="https://images.unsplash.com/photo-1491841573634-28140fc7ced7?w=400&q=80" alt="A Brief History of Time" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">A Brief History of Time</h3>
+            <p class="book-author">by Stephen Hawking</p>
+            <p class="book-category">Science</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <span class="book-status reserved">Reserved</span>
+          <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&q=80" alt="The Great Gatsby" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">The Great Gatsby</h3>
+            <p class="book-author">by F. Scott Fitzgerald</p>
+            <p class="book-category">Literature</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <span class="book-status">Available</span>
+          <img src="https://images.unsplash.com/photo-1592496431122-2349e0fbc666?w=400&q=80" alt="Calculus" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">Calculus: Early Transcendentals</h3>
+            <p class="book-author">by James Stewart</p>
+            <p class="book-category">Mathematics</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <span class="book-status">Available</span>
+          <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&q=80" alt="Clean Code" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">Clean Code</h3>
+            <p class="book-author">by Robert C. Martin</p>
+            <p class="book-category">Computer Science</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <span class="book-status issued">Issued</span>
+          <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&q=80" alt="To Kill a Mockingbird" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">To Kill a Mockingbird</h3>
+            <p class="book-author">by Harper Lee</p>
+            <p class="book-category">Literature</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <span class="book-status">Available</span>
+          <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&q=80" alt="Introduction to Algorithms" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">Introduction to Algorithms</h3>
+            <p class="book-author">by Thomas H. Cormen</p>
+            <p class="book-category">Computer Science</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <span class="book-status">Available</span>
+          <img src="https://images.unsplash.com/photo-1491841573634-28140fc7ced7?w=400&q=80" alt="A Brief History of Time" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">A Brief History of Time</h3>
+            <p class="book-author">by Stephen Hawking</p>
+            <p class="book-category">Science</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="newly-added-books popular-books">
+    <h2>Newly Added Books</h2>
+    <p class="subtitle">Discover the latest additions to our library collection</p>
+
+    <div class="books-slider-container">
+      <div class="books-slider" id="newBooksSlider">
+        <div class="book-card">
+          <span class="book-status">Available</span>
+          <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=400&q=80" alt="Atomic Habits" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">Atomic Habits</h3>
+            <p class="book-author">by James Clear</p>
+            <p class="book-category">Self-Help</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <span class="book-status">Available</span>
+          <img src="https://i.pinimg.com/736x/8f/c4/e2/8fc4e27ee1fcb8ed609937f02e2414a3.jpg" alt="The Silent Patient" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">The Silent Patient</h3>
+            <p class="book-author">by Alex Michaelides</p>
+            <p class="book-category">Thriller</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <span class="book-status reserved">Reserved</span>
+          <img src="https://flxt.tmsimg.com/assets/p2928_v_v13_ai.jpg" alt="The Andromeda Strain" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">The Andromeda Strain</h3>
+            <p class="book-author">by Michael Crichton</p>
+            <p class="book-category">Fiction</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <span class="book-status">Available</span>
+          <img src="https://th.bing.com/th/id/R.bffaa1a3ebff3fb39b3ff9ff652b4b65?rik=N6LaoeouaR8nVQ&riu=http%3a%2f%2ftheoccasionalbook.com%2fwp-content%2fuploads%2f2018%2f11%2fFactfulness-cover-RGB.jpg&ehk=EU%2beFxE6QDI4%2b9G0gW41XNgfo4c6Rvsba81q4Q6xJw8%3d&risl=&pid=ImgRaw&r=0" alt="Factfulness" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">Factfulness</h3>
+            <p class="book-author">by Hans Rosling</p>
+            <p class="book-category">Non-Fiction</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <span class="book-status">Available</span>
+          <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=400&q=80" alt="Atomic Habits" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">Atomic Habits</h3>
+            <p class="book-author">by James Clear</p>
+            <p class="book-category">Self-Help</p>
+          </div>
+        </div>
+        <div class="book-card">
+          <span class="book-status">Available</span>
+          <img src="https://i.pinimg.com/736x/8f/c4/e2/8fc4e27ee1fcb8ed609937f02e2414a3.jpg" alt="The Silent Patient" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">The Silent Patient</h3>
+            <p class="book-author">by Alex Michaelides</p>
+            <p class="book-category">Thriller</p>
+          </div>
+        </div>
+        <div class="book-card">
+          <span class="book-status reserved">Reserved</span>
+          <img src="https://flxt.tmsimg.com/assets/p2928_v_v13_ai.jpg" alt="The Andromeda Strain" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">The Andromeda Strain</h3>
+            <p class="book-author">by Michael Crichton</p>
+            <p class="book-category">Fiction</p>
+          </div>
+        </div>
+        <div class="book-card">
+          <span class="book-status">Available</span>
+          <img src="https://th.bing.com/th/id/R.bffaa1a3ebff3fb39b3ff9ff652b4b65?rik=N6LaoeouaR8nVQ&riu=http%3a%2f%2ftheoccasionalbook.com%2fwp-content%2fuploads%2f2018%2f11%2fFactfulness-cover-RGB.jpg&ehk=EU%2beFxE6QDI4%2b9G0gW41XNgfo4c6Rvsba81q4Q6xJw8%3d&risl=&pid=ImgRaw&r=0" alt="Factfulness" class="book-cover">
+          <div class="book-info">
+            <h3 class="book-title">Factfulness</h3>
+            <p class="book-author">by Hans Rosling</p>
+            <p class="book-category">Non-Fiction</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-about">
+        <h3>📘 GGCW Library</h3>
+        <p>Government Graduate College Women Library Management System. Streamline operations and enhance student learning experience.</p>
+        <div class="footer-socials">
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Browse Books</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Help Center</a></li>
+        </ul>
+      </div>
+      <div class="footer-support">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Register</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Made with Readdy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 GGCW Library Management System. All rights reserved. Built with modern technology for better library management.</p>
+    </div>
+  </footer>
+
+  <script>
+     document.getElementById("registerBtn").addEventListener("click", function () {
+      window.location.href = "register.html";
+    });
+
+    document.getElementById("loginformBtn").addEventListener("click", function () {
+      window.location.href = "loginform.html";
+    });
+
+  </script>
+</body>
+</html>

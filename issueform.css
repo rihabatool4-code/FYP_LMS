@@ -1,0 +1,147 @@
+/* General Setup */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f6f9; /* Simulates the main page background */
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Modal Backdrop and Container --- */
+
+.modal-backdrop {
+    /* Covers the entire screen */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-container {
+    background-color: #fff;
+    width: 90%;
+    max-width: 400px; /* Slimmer width to match the image */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/* --- Modal Header --- */
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #999;
+}
+
+/* --- Modal Body (Form) --- */
+
+.modal-body {
+    padding: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; /* Spacing between fields */
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+/* Styling for Input fields */
+input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Date Input Specific Styling */
+.date-input-container {
+    position: relative;
+}
+
+.date-input-container input {
+    /* Padding on the right to make space for the icon */
+    padding-right: 40px; 
+}
+
+.calendar-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 1.1em;
+    cursor: pointer;
+    /* Using the "📅" emoji here, or you could use a FontAwesome icon */
+}
+
+/* --- Modal Footer (Buttons) --- */
+
+.modal-footer {
+    padding: 15px 30px;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 10px;
+    transition: background-color 0.2s;
+}
+
+.btn-cancel {
+    background-color: #f8f9fa;
+    color: #555;
+    border: 1px solid #ccc;
+}
+
+.btn-primary {
+    background-color: #28a745; /* Distinct green color for "Issue Book" */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1e7e34;
+}
