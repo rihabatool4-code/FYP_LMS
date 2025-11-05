@@ -54,7 +54,7 @@ body {
     height: 150%; /* Make the image fill the height of the container */
     width: auto; /* Allow the width to scale proportionally */
     object-fit: contain;
-    padding: 5px 0; /* Optional: Add slight vertical padding if needed */
+    padding: 0; /* Optional: Add slight vertical padding if needed */
     transition: transform 0.3s ease;
     animation: fadeIn 0.8s ease-out;
 }
@@ -170,7 +170,7 @@ body {
   overflow :  hidden;
   /* These two lines ensure full-screen width: */
   width: 100vw; /* Sets the width to 100% of the viewport width */
-  margin-left: calc(50% - 50vw); /* Pushes the element left to override container padding/margins */
+margin-left: calc(50% - 50vw); /* Pushes the element left to override container padding/margins */
 }
 .slideshow-container {
   position: absolute;

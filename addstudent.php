@@ -21,7 +21,7 @@ if (!$conn) {
 
 // Insert query
 $qry = "INSERT INTO addstudent (Studentid, Name, Email, Phone, Department, Semester)
-        VALUES ($rollno, '$name', '$email', '$mobile', '$department', '$semester')";
+        VALUES ('$rollno, '$name', '$email', '$mobile', '$department', '$semester')";
 
 // Debug (optional): show query
 // echo "Running query: $qry<br>";
