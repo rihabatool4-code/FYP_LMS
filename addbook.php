@@ -1,15 +1,14 @@
 <?php
-$rollno     = $_POST['rollno'];
-$name       = $_POST['name'];
-$email      = $_POST['email'];
-$mobile     = $_POST['mobile'];
-$department = $_POST['department'];
-$semester   = $_POST['semester'];
+$title     = $_POST['title'];
+$author       = $_POST['author'];
+$accno      = $_POST['accno'];
+$category     = $_POST['category'];
+
 
 $host     = "localhost";
 $user     = "root";
 $pass     = "";
-$database = "FYP";
+$database = "fyp";
 
 // Create connection
 $conn = mysqli_connect($host, $user, $pass, $database);
@@ -20,15 +19,15 @@ if (!$conn) {
 }
 
 // Insert query
-$qry = "INSERT INTO addstudent (Studentid, Name, Email, Phone, Department, Semester)
-        VALUES ($rollno, '$name', '$email', '$mobile', '$department', '$semester')";
+$qry = "INSERT INTO addbook (Title, Author, Accno, Category)
+        VALUES ('title', '$author', $accno, '$category')";
 
 // Debug (optional): show query
 // echo "Running query: $qry<br>";
 
 // Run query
 if (mysqli_query($conn, $qry)) {
-    echo "Student record added successfully.";
+    echo "Book record added successfully.";
 } else {
     echo "Error: " . mysqli_error($conn);
 }
