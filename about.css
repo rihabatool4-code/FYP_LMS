@@ -660,13 +660,11 @@ a {
 }
 
 .team-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    display: flex;           /* Grid se Flex mein change */
+    justify-content: center; /* Center horizontally */
+    gap: 60px;               /* Boxes ke beech spacing */
     margin-top: 30px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    flex-wrap: wrap;         /* Mobile pe wrap ho jaye */
 }
 
 .member {
@@ -677,6 +675,7 @@ a {
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     animation: fadeInUp 0.8s ease-out forwards;
     opacity: 0;
+    flex: 0 0 300px;
     display: flex; /* For better vertical alignment */
     flex-direction: column;
     justify-content: space-between;

@@ -11,19 +11,16 @@
  
    <!-- Navigation Bar -->
   <header class="navbar">
-    <div class="logo-container">
-    <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
-</div>
+    <div class="logo">📘 GGCW Library</div>
     <nav>
       <ul>
         <li><a href="Home.html">Home</a></li>
        <li><a href="browseBooks.html">Browse Books</a></li>
-        <li><a href="Pdf.html">PDFs</a></li>
+        <li><a href="pdf.html">PDFs</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="admin.html">Admin Dashboard</a></li>
         <li><a href="stdash.html">Student Dashboard</a></li>
-        <li><a href="donationbooks.html">Donation</a></li>
       </ul>
     </nav>
     <div class="auth-buttons">
@@ -47,98 +44,84 @@
       <thead>
         <tr>
           <th>Book Details</th>
-          <th>ISBN</th>
-          <th>Category</th>
-          <th>Copies</th>
-          <th>Available</th>
-          <th>Status</th>
+          <th>Accession no</th>
+          <th>Department</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><strong>Clean Code: A Handbook of Agile Software Craftsmanship</strong><br><small>by Robert C. Martin</small></td>
-          <td>978 0132350884</td>
-          <td><span class="tag blue">Computer Science</span></td>
-          <td>5</td>
-          <td>3</td>
-          <td><span class="status active">Active</span></td>
-          <td class="actions">
-            <i class="fa-solid fa-pen edit" title="Edit Book"></i>
-            <i class="fa-solid fa-trash delete" title="Delete Book"></i>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>To Kill a Mockingbird</strong><br><small>by Harper Lee</small></td>
-          <td>978 0061120084</td>
-          <td><span class="tag purple">Literature</span></td>
-          <td>8</td>
-          <td>2</td>
-          <td><span class="status active">Active</span></td>
-          <td class="actions">
-            <i class="fa-solid fa-pen edit" title="Edit Book"></i>
-            <i class="fa-solid fa-trash delete" title="Delete Book"></i>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Introduction to Algorithms</strong><br><small>by Thomas H. Cormen</small></td>
-          <td>978 0262033848</td>
-          <td><span class="tag blue">Computer Science</span></td>
-          <td>3</td>
-          <td>1</td>
-          <td><span class="status active">Active</span></td>
-          <td class="actions">
-            <i class="fa-solid fa-pen edit" title="Edit Book"></i>
-            <i class="fa-solid fa-trash delete" title="Delete Book"></i>
-          </td>
-        </tr>
-      </tbody>
+<?php
+$host = "localhost";
+$user = "root";
+$pass = "";
+$database = "fyp";
+
+// Connect to database
+$conn = mysqli_connect($host, $user, $pass, $database);
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+// Fetch all books
+$qry = "SELECT * FROM addbook";
+$result = mysqli_query($conn, $qry);
+
+if (mysqli_num_rows($result) > 0) {
+  while ($row = mysqli_fetch_assoc($result)) {
+    echo "
+    <tr>
+      <td><strong>{$row['Title']}</strong><br><small>by {$row['Author']}</small></td>
+      <td>{$row['Accno']}</td>
+      <td><span class='tag blue'>{$row['Category']}</span></td>
+      <td class='actions'>
+        <i class='fa-solid fa-pen edit' title='Edit Book'></i>
+        <i class='fa-solid fa-trash delete' title='Delete Book'></i>
+      </td>
+    </tr>
+    ";
+  }
+} else {
+  echo "<tr><td colspan='4'>No books found in the database.</td></tr>";
+}
+
+mysqli_close($conn);
+?>
+</tbody>
+
     </table>
   </main>
-
 <div class="modal" id="addBookModal">
   <div class="modal-content">
     
     <h2>Add New Book</h2>
-    <form class="add-book-form">
+    <form class="form-box" action="addbook.php" method="POST">
+
       <div class="form-row">
         <div class="form-group">
           <label>Book Title *</label>
-          <input type="text" placeholder="Enter book title" required />
+          <input type="text" name="title" placeholder="Enter book title" required />
         </div>
         <div class="form-group">
           <label>Author *</label>
-          <input type="text" placeholder="Enter author name" required />
-        </div>
-      </div>
-      
-      <div class="form-row">
-        <div class="form-group">
-          <label>ISBN *</label>
-          <input type="text" placeholder="978-0000000000" required />
-        </div>
-        <div class="form-group">
-          <label>Category *</label>
-          <select required>
-            <option>Select category</option>
-            <option>Computer Science</option>
-            <option>Literature</option>
-            <option>Science</option>
-            <option>Mathematics</option>
-            <option>Psychology</option>
-            <option>History</option>
-          </select>
+          <input type="text" name="author" placeholder="Enter author name" required />
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
-          <label>Total Copies *</label>
-          <input type="number" value="1" required />
+          <label>Acc No *</label>
+          <input type="text" name="accno" placeholder="Enter accession number" required />
         </div>
         <div class="form-group">
-          <label>Available Copies *</label>
-          <input type="number" value="1" required />
+          <label>Category *</label>
+          <select name="category" required>
+               <option value="">Select category</option>
+               <option value="Information Technology">Information Technology</option>
+               <option value="Psychology">Psychology</option>
+               <option value="Computer Science">Computer Science</option>
+               <option value="Mathematics">Mathematics</option>
+               <option value="Economics">Economics</option>
+          </select>
         </div>
       </div>
 
@@ -146,6 +129,7 @@
         <button type="button" class="cancel-btn" id="cancelBtn">Cancel</button>
         <button type="submit" class="submit-btn">Add Book</button>
       </div>
+
     </form>
   </div>
 </div>
@@ -153,7 +137,7 @@
    <footer class="footer">
     <div class="footer-top">
       <div class="footer-about">
-        <h2>GGCW Library</h2>
+        <h3>📘 GGCW Library</h3>
         <p>Government Graduate College Women Library Management System. Streamline operations and enhance student learning experience.</p>
         <div class="footer-socials">
           <a href="#"><i class="fa-brands fa-facebook"></i></a>
@@ -163,7 +147,7 @@
         </div>
       </div>
       <div class="footer-links">
-        <h3>Quick Links</h3>
+        <h4>Quick Links</h4>
         <ul>
           <li><a href="#">Home</a></li>
           <li><a href="#">Browse Books</a></li>
@@ -173,7 +157,7 @@
         </ul>
       </div>
       <div class="footer-support">
-        <h3>Support</h3>
+        <h4>Support</h4>
         <ul>
           <li><a href="#">Login</a></li>
           <li><a href="#">Register</a></li>
@@ -192,27 +176,19 @@
   <script>
     const modal = document.getElementById("addBookModal");
     const openBtn = document.getElementById("openModal");
-    // const closeBtn = document.getElementById("closeModal"); // REMOVED
     const cancelBtn = document.getElementById("cancelBtn");
 
-    // Function to close modal
     const closeModal = () => modal.style.display = "none";
 
-    // Open modal
     openBtn.onclick = () => modal.style.display = "block";
-
-    // Close modal using Cancel button
-    // closeBtn.onclick = closeModal; // REMOVED
     cancelBtn.onclick = closeModal;
     
-    // Close modal if user clicks outside of it (STILL KEPT FOR CONVENIENCE)
     window.onclick = (e) => { 
         if(e.target === modal) {
             closeModal();
         } 
     }
 
-    // Navigation logic 
     document.getElementById("registerBtn").addEventListener("click", function () {
       window.location.href = "register.html";
     });
