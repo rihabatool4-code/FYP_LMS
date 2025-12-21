@@ -4,6 +4,7 @@ $user = "root";
 $pass = "";
 $database = "fyp";
 
+// Connect to database
 $conn = mysqli_connect($host, $user, $pass, $database);
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
