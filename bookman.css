@@ -211,8 +211,6 @@ main {
   box-shadow: 0 5px 15px rgba(42, 98, 255, 0.4);
 }
 
-
-
 .subtitle {
     color: var(--text-medium);
     margin-bottom: 30px;
@@ -418,7 +416,7 @@ td small {
     flex: 1 1 300px;
 }
 
-.footer-about h2 {
+.footer-about h3 {
     color: white;
     font-family: 'Poppins', sans-serif;
     margin-bottom: 10px;
@@ -447,8 +445,8 @@ td small {
     flex: 1 1 180px;
 }
 
-.footer-links h3,
-.footer-support h3 {
+.footer-links h4,
+.footer-support h4 {
     color: #ffffff;
     margin-bottom: 10px;
 }

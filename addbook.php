@@ -20,18 +20,21 @@ if (!$conn) {
 
 // Insert query
 $qry = "INSERT INTO addbook (Title, Author, Accno, Category)
-        VALUES ('title', '$author', $accno, '$category')";
+        VALUES ('$title', '$author', $accno, '$category')";
 
 // Debug (optional): show query
 // echo "Running query: $qry<br>";
 
 // Run query
 if (mysqli_query($conn, $qry)) {
-    echo "Book record added successfully.";
+
+    header("Location: bookman.php");
+    exit();
+
 } else {
     echo "Error: " . mysqli_error($conn);
 }
 
-// Close connection
 mysqli_close($conn);
+
 ?>
