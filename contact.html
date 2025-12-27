@@ -66,15 +66,15 @@
 
         <section class="send-message">
             <h2>Send us a Message</h2>
-            <form id="contactForm">
+            <form id="contactForm" action="message.php" method="POST">
                 <div class="form-group">
-                    <input type="text" id="firstName" placeholder="Name" required>
+                    <input type="text" id="name" name="name" placeholder="Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" placeholder="Email Address" required>
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
                 </div>
                 <div class="form-group">
-                    <textarea id="message" placeholder="Message" rows="5" required></textarea>
+                    <textarea id="message" name="message" placeholder="Message" rows="5" required></textarea>
                 </div>
                 <button type="submit" class="send-button">
                     <i class="fas fa-paper-plane"></i> Send Message
@@ -160,52 +160,10 @@
     <script>
 
         document.getElementById("registerBtn").addEventListener("click", function () {
-            window.location.href = "register.html";
+            window.location.href = "reg.html";
         });
-
         document.getElementById("loginformBtn").addEventListener("click", function () {
-            window.location.href = "loginform.html";
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-    
-            const contactForm = document.getElementById('contactForm');
-    
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const data = {
-                    firstName: document.getElementById('firstName').value,
-                    email: document.getElementById('email').value,
-                    message: document.getElementById('message').value,
-                };
-                console.log('Form Submitted:', data);
-                alert('Thank you for your message! We will get back to you soon.');
-                this.reset();
-            });
-
-            const animatedElements = document.querySelectorAll(
-                '.contact-card, .get-in-touch h2, .send-message h2, .library-hours-section, .map-placeholder'
-            );
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            animatedElements.forEach(element => {
-                element.classList.add('js-fade-in');
-                observer.observe(element);
-            });
+            window.location.href = "login2.html";
         });
     </script>
 </body>

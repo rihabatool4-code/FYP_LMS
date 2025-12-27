@@ -1,4 +1,8 @@
 <?php
+$name     = $_POST['name'];
+$email    = $_POST['email'];
+$message  = $_POST['message'];
+
 
 $host     = "localhost";
 $user     = "root";
@@ -6,35 +10,27 @@ $pass     = "";
 $database = "fyp";
 
 // Create connection
-$connection = mysqli_connect($host, $user, $pass, $database);
+$conn = mysqli_connect($host, $user, $pass, $database);
 
 // Check connection
-if (!$connection) {
+if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Query to select all students
-$qry = "SELECT * FROM message";
-$result = mysqli_query($connection, $qry);
+// Insert query
+$qry = "INSERT INTO message (Name, Email, Message)
+        VALUES ('$name', '$email', '$message')";
 
-// Display table
-echo "<table border=1 align=center width=250>
-        <td>Name</td>
-        <td>Email</td>
-        <td>Message</td>
-      </tr>";
+// Debug (optional): show query
+// echo "Running query: $qry<br>";
 
-// Fetch rows
-while ($row = mysqli_fetch_array($result)) {
-    echo "<tr align='center'>";
-    echo "<td>" . $row['Name'] . "</td>";
-    echo "<td>" . $row['Email'] . "</td>";
-    echo "<td>" . $row['Message'] . "</td>";
-    echo "</tr>";
+// Run query
+if (mysqli_query($conn, $qry)) {
+    echo "Message record added successfully.";
+} else {
+    echo "Error: " . mysqli_error($conn);
 }
 
-echo "</table>";
-
 // Close connection
-mysqli_close($connection);
+mysqli_close($conn);
 ?>
