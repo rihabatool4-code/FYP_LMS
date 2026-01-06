@@ -28,11 +28,13 @@ $qry = "INSERT INTO addstudent (Studentid, Name, Email, Phone, Department, Semes
 
 // Run query
 if (mysqli_query($conn, $qry)) {
-    echo "Student record added successfully.";
+
+    header("Location: stmanag.php");
+    exit();
+
 } else {
     echo "Error: " . mysqli_error($conn);
 }
 
-// Close connection
 mysqli_close($conn);
 ?>

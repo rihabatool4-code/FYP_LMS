@@ -1,8 +1,7 @@
 <?php
-$title     = $_POST['title'];
-$author       = $_POST['author'];
-$accno      = $_POST['accno'];
-$category     = $_POST['category'];
+$name     = $_POST['name'];
+$email    = $_POST['email'];
+$message  = $_POST['message'];
 
 
 $host     = "localhost";
@@ -19,22 +18,19 @@ if (!$conn) {
 }
 
 // Insert query
-$qry = "INSERT INTO addbook (Title, Author, Accno, Category)
-        VALUES ('$title', '$author', $accno, '$category')";
+$qry = "INSERT INTO message (Name, Email, Message)
+        VALUES ('$name', '$email', '$message')";
 
 // Debug (optional): show query
 // echo "Running query: $qry<br>";
 
 // Run query
 if (mysqli_query($conn, $qry)) {
-
-    header("Location: bookman.php");
-    exit();
-
+    echo "Message record added successfully.";
 } else {
     echo "Error: " . mysqli_error($conn);
 }
 
+// Close connection
 mysqli_close($conn);
-
 ?>
