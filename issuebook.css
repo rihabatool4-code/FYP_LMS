@@ -60,9 +60,13 @@ h2 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     color: var(--text-dark);
-    margin-bottom: 5px;
-}
+    margin-bottom: 15px;
+    margin-top: 20px;
 
+}
+.subtitle {
+    margin-top: -5px;
+}
 /* Page Load Animation for Main Content */
 main {
     padding: 40px 60px;
@@ -70,7 +74,9 @@ main {
     opacity: 0; 
     animation-delay: 0.1s;
 }
-
+main h2 {
+    margin-bottom: 25px;
+}
 /* Navigation Bar */
 .navbar {
   display: flex;
@@ -98,37 +104,28 @@ main {
   }
 }
 
-/* --- NEW LOGO STYLES FOR IMAGE UPLOAD --- */
-
-/* Ensures the logo container doesn't force a specific shape or background, 
-   just acts as a flex container */
+/* --- NEW LOGO STYLES --- */
 .logo-container {
     display: flex;
     align-items: center; 
-    justify-content: flex-start; /* Align left */
-    height: 50px; /* Set a standard height for the logo area */
+    justify-content: flex-start;
+    height: 50px;
     transition: all 0.3s ease;
 }
 
-/* Styles the actual logo image */
 .ggcw-logo {
-    height: 150%; /* Make the image fill the height of the container */
-    width: auto; /* Allow the width to scale proportionally */
+    height: 150%; 
+    width: auto;
     object-fit: contain;
-    padding: 5px 0; /* Optional: Add slight vertical padding if needed */
+    padding: 5px 0;
     transition: transform 0.3s ease;
     animation: fadeIn 0.8s ease-out;
 }
 
 .ggcw-logo:hover {
-    transform: scale(1.05); /* Add a slight zoom effect on hover */
+    transform: scale(1.05);
 }
-/* --- END NEW LOGO STYLES --- */
-
-.navbar .logo {
-  font-size: 25px;
-  font-weight: bold;
-}
+/* --- END LOGO STYLES --- */
 
 .navbar ul {
   display: flex;
@@ -219,14 +216,12 @@ main {
   box-shadow: 0 5px 15px rgba(42, 98, 255, 0.4);
 }
 
-
-
 .subtitle {
     color: var(--text-medium);
     margin-bottom: 30px;
 }
 
-/* Stats - Colourful Design */
+/* Stats Cards */
 .stats {
     display: flex;
     gap: 20px;
@@ -257,7 +252,6 @@ main {
     color: var(--text-medium);
 }
 
-/* Individual Colors for Stats */
 .stat-card.blue { border-left-color: var(--primary-color); }
 .stat-card.blue h3 { color: var(--primary-color); }
 
@@ -266,7 +260,6 @@ main {
 
 .stat-card.green { border-left-color: var(--accent-color); }
 .stat-card.green h3 { color: var(--accent-color); }
-
 
 /* Top Buttons */
 .top-actions {
@@ -364,17 +357,17 @@ td small {
     font-weight: 600;
     display: inline-block;
 }
-.active {
+.Issued {
     background: #d1fae5;
     color: var(--accent-color); 
 }
-.overdue {
+.Overdue {
     background: #fee2e2; 
     color: var(--danger-color);
     animation: pulse 1.5s infinite;
 }
 
-/* Actions - Circle Buttons */
+/* Actions */
 .actions { display: flex; gap: 10px; align-items: center; }
 .actions i {
     cursor: pointer;
@@ -393,7 +386,6 @@ td small {
 .return:hover { background: #08796f; transform: scale(1.1); }
 .delete { color: white; background: var(--danger-color); }
 .delete:hover { background: #c62828; transform: scale(1.1); }
-
 
 /* Footer */
 .footer {
@@ -415,30 +407,47 @@ td small {
 .footer-links a:hover, .footer-support a:hover { color: var(--primary-color); text-decoration: underline; }
 .footer-bottom { text-align: center; font-size: 13px; color: #94a3b8; border-top: 1px solid #374151; padding-top: 20px; }
 
-
-/* Modal (Issue Book Form) - Small Size and Styled */
+/* Modal */
 .modal {
+    .modal {
     display: none;
     position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
     z-index: 1000;
-    padding-top: 80px;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.5);
+}
+    /*display: none;
+   /* position: fixed;
+   /* z-index: 1000;
+    /*padding-top: 20px;
+    /*left: 0; top: 0;
+    /*width: 100%; height: 100%;
+   /* background-color: rgba(0,0,0,0.5);
 }
 
 .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: var(--card-background);
-    margin: 50px auto;
-    padding: 25px; 
-    border-radius: 12px;
-    width: 400px; /* Compact Width */
+    padding: 25px;
+    border-radius: 10px;
+    width: 500px;          /* Add Book jaisi width */
     max-width: 90%;
     box-shadow: var(--shadow-medium);
-    position: relative;
-    transform: scale(0.9);
-    opacity: 0;
-    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+  /*  background: var(--card-background);
+    /*margin-top: 10px;
+   /* padding: 30px; 
+   /* border-radius: 12px;
+   /* width: 650px; /* Wider for better alignment */
+   /* max-width: 95%;
+   /* box-shadow: var(--shadow-medium);
+    /*position: relative;
+    /*transform: scale(0.9);
+    /*opacity: 0;
+   /* transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .modal[style*="block"] .modal-content {
@@ -457,58 +466,67 @@ td small {
 }
 .close-btn:hover { color: var(--danger-color); }
 
-
-/* Form Styling */
-.issue-form { margin-top: 5px; }
-.form-group { margin-bottom: 15px; }
-.issue-form label {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-dark);
-    margin-bottom: 5px;
+/* ===== FIXED ISSUE FORM LAYOUT ===== */
+.issue-form {
+gap: 12px;
+align-items: center;
 }
+
+.form-row {
+    gap: 15px;
+    margin-bottom: 10px;
+  /*  display: flex;*/
+   /* flex-wrap: wrap; */
+    /*gap: 8px; */
+   /* width: 100%;*/
+    /*justify-content: space-between;*/
+}
+
+.form-row.single {
+    justify-content: center; 
+}
+
+.form-group {
+    flex: 1;
+    min-width: unset;
+   /* flex: 1 1 45%; */
+    /*display: flex;*/
+   /* flex-direction: column;*/
+   /* min-width: 220px; */
+
+}
+
 .issue-form input,
 .issue-form select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+   /* width: 100%;*/
+   /* box-sizing: border-box;*/
+}
+
+.submit-btn {
     width: 100%;
-    padding: 10px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 15px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-.issue-form input:focus,
-.issue-form select:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
-    outline: none;
-}
-
-
-.form-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.cancel-btn, .submit-btn {
-    padding: 9px 18px;
-    font-weight: 600;
-    border-radius: 8px;
+    max-width: 200px; 
+    padding: 12px;
+    background: var(--primary-color);
+    color: white;
     border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
 }
 
-.cancel-btn { background: #f3f4f6; color: var(--text-dark); }
-.cancel-btn:hover { background: #e5e7eb; transform: scale(1.02); }
+.submit-btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
 
-.submit-btn { background: var(--primary-color); color: white; }
-.submit-btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
-
-
-/* Media Queries (Responsiveness) */
+/* Media Queries */
 @media (max-width: 992px) {
     .navbar { padding: 15px 30px; }
     main { padding: 30px 30px; }
@@ -520,26 +538,5 @@ td small {
     .navbar { flex-direction: column; align-items: flex-start; gap: 10px; }
     .auth-buttons { width: 100%; display: flex; justify-content: center; margin-top: 10px; }
     .stats { flex-direction: column; }
-    .top-actions { justify-content: space-between; }
-    .footer-top { flex-direction: column; }
-    .modal-content { padding: 25px; }
-    
-    /* Table Responsive */
-    table, thead, tbody, th, td, tr { display: block; }
-    thead tr { position: absolute; top: -9999px; left: -9999px; }
-    tr { border: 1px solid var(--border-color); margin-bottom: 15px; border-radius: 12px; overflow: hidden; }
-    td { border: none; position: relative; padding-left: 50%; text-align: right; border-bottom: 1px dashed var(--border-color); }
-    td:last-child { border-bottom: none; }
-    td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 15px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        text-align: left;
-        font-weight: 600;
-        color: var(--primary-color);
-    }
-    .actions { justify-content: flex-end; padding-top: 10px; }
+    .form-group { flex: 1 1 100%; } /* Single column on small screens */
 }
