@@ -58,11 +58,11 @@ if (isset($_GET['delete'])) {
   <nav>
     <ul>
       <li><a href="Home.html">Home</a></li>
-      <li><a href="browseBooks.html">Browse Books</a></li>
+      <li><a href="browseBooks.php">Browse Books</a></li>
       <li><a href="Pdf.html">PDFs</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="admin.html">Admin Dashboard</a></li>
+      <li><a href="admin.php">Admin Dashboard</a></li>
       <li><a href="stdash.html">Student Dashboard</a></li>
       <li><a href="donationbooks.html">Donation Books</a></li>
     </ul>
@@ -80,7 +80,7 @@ if (isset($_GET['delete'])) {
       <p>Manage student registrations and accounts</p>
     </div>
     <div class="actions">
-      <a href="admin.html">
+      <a href="admin.php">
         <button class="btn back"><i class="fa-solid fa-arrow-left"></i> Back to Dashboard</button>
       </a>
       <button class="btn add-student" id="openAddStudentModal"><i class="fa-solid fa-user-plus"></i> Add Student</button>
@@ -215,6 +215,48 @@ if (isset($_GET['delete'])) {
   </div>
 </div>
 
+ <!--footer-->
+
+      <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-about">
+                <h3>GGCW Library</h3>
+                <p>Government Graduate College Women Library Management System. Streamline operations and enhance student learning experience.</p>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/groups/1232103560626611/"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/govt.graduate.college/?hl=en" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="browseBooks.html">Browse Books</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-support">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="loginform.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Made with Readdy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 GGCW Library Management System. All rights reserved. Built with modern technology for better library management.</p>
+        </div>
+    </footer>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById("addStudentModal");
@@ -252,12 +294,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // DELETE BUTTON
   document.querySelectorAll(".delete-icon").forEach(btn => {
-      btn.onclick = () => {
-          if(confirm("Are you sure you want to delete this student?")){
-              window.location.href = "stmanag.php?delete=" + btn.dataset.id;
-          }
-      };
-  });
+btn.onclick = () => {
+  window.location.href = "stmanag.php?delete=" + btn.dataset.id;
+};
+});
 });
 </script>
 

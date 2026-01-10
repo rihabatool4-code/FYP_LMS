@@ -5,126 +5,118 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GGCW Library — PDF Page</title>
   <link rel="stylesheet" href="Pdf.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <header class="navbar">
- <div class="logo-container">
-    <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
-</div>    <nav>
+
+  <header class="navbar">
+    <div class="logo-container">
+        <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
+    </div>
+    <nav>
       <ul>
         <li><a href="Home.html">Home</a></li>
-       <li><a href="browseBooks.html">Browse Books</a></li>
+        <li><a href="browseBooks.php">Browse Books</a></li>
         <li><a class="active" href="Pdf.html">PDFs</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="admin.html">Admin Dashboard</a></li>
+        <li><a href="admin.php">Admin Dashboard</a></li>
         <li><a href="stdash.html">Student Dashboard</a></li>
-        <li><a href="donationbooks.html">Donation Books</a></li>
+        <li><a href="donationbooks.html">Donation</a></li>
       </ul>
     </nav>
     <div class="auth-buttons">
-      <button class="login-btn" id="loginformBtn">Login</button>
-      <button class="register-btn" id="registerBtn">Register</button>
+      <button class="login-btn">Login</button>
+      <button class="register-btn">Register</button>
     </div>
   </header>
 
-  <div class="container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <h2>Departments</h2>
-      <div id="deptList">
-        <div class="dept selected" data-dept="All">All</div>
-        <div class="dept" data-dept="Computer Science">Computer Science</div>
-        <div class="dept" data-dept="Mathematics">Mathematics</div>
-        <div class="dept" data-dept="Chemistry">Chemistry</div>
-        <div class="dept" data-dept="English">English</div>
-      </div>
-    </aside>
+  <div class="main-wrapper">
+    <div class="container">
+      <aside class="sidebar">
+        <h2>Departments</h2>
+        <div id="deptList">
+          <div class="dept selected" data-dept="All">All</div>
+          <div class="dept" data-dept="Computer Science">Computer Science</div>
+          <div class="dept" data-dept="Mathematics">Mathematics</div>
+          <div class="dept" data-dept="Chemistry">Chemistry</div>
+          <div class="dept" data-dept="English">English</div>
+        </div>
+      </aside>
 
-    <!-- Main Content -->
-    <main>
-      <h1>Available PDFs</h1>
-      <div class="searchbar">
-        <input type="text" id="search" placeholder="Search PDFs by title or author...">
-        <button id="clear">Clear</button>
-      </div>
-
-      <!-- PDF CARDS -->
-      <section id="pdfGrid" class="pdf-grid">
-        <!-- Computer Science -->
-        <div class="card" data-dept="Computer Science" data-title="Programming Fundamentals" data-author="Dr. A. Khan">
-          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="Programming Fundamentals">
-          <div class="card-content">
-            <h3>Programming Fundamentals</h3>
-            <p>Dr. A. Khan</p>
-            <p>Computer Science</p>
-            <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" class="preview-btn">Preview</a>
-          </div>
+      <main class="content-area">
+        <h1>Available PDFs</h1>
+        <div class="searchbar">
+          <input type="text" id="search" placeholder="Search PDFs by title or author...">
+          <button id="clear">Clear</button>
         </div>
 
-        <div class="card" data-dept="Computer Science" data-title="Data Structures & Algorithms" data-author="S. Rehman">
-          <img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/40044a07-3406-4baf-b225-903137d66218" alt="Data Structures">
-          <div class="card-content">
-            <h3>Data Structures & Algorithms</h3>
-            <p>S. Rehman</p>
-            <p>Computer Science</p>
-            <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" class="preview-btn">Preview</a>
+        <section id="pdfGrid" class="pdf-grid">
+          <div class="card" data-dept="Computer Science" data-title="Programming Fundamentals" data-author="Dr. A. Khan">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="Programming">
+            <div class="card-content">
+              <h3>Programming Fundamentals</h3>
+              <p>Dr. A. Khan</p>
+              <p class="dept-name">Computer Science</p>
+              <a href="#" class="preview-btn">Preview</a>
+            </div>
           </div>
-        </div>
 
-        <!-- Mathematics -->
-        <div class="card" data-dept="Mathematics" data-title="Applied Mathematics" data-author="R. Ahmed">
-          <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df" alt="Applied Mathematics">
-          <div class="card-content">
-            <h3>Applied Mathematics</h3>
-            <p>R. Ahmed</p>
-            <p>Mathematics</p>
-            <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" class="preview-btn">Preview</a>
+          <div class="card" data-dept="Mathematics" data-title="Applied Mathematics" data-author="R. Ahmed">
+            <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df" alt="Mathematics">
+            <div class="card-content">
+              <h3>Applied Mathematics</h3>
+              <p>R. Ahmed</p>
+              <p class="dept-name">Mathematics</p>
+              <a href="#" class="preview-btn">Preview</a>
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div class="card" data-dept="Mathematics" data-title="Calculus for Engineers" data-author="A. Qureshi">
-          <img src="https://images.unsplash.com/photo-1581092335143-425c2a91efde" alt="Calculus for Engineers">
-          <div class="card-content">
-            <h3>Calculus for Engineers</h3>
-            <p>A. Qureshi</p>
-            <p>Mathematics</p>
-            <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" class="preview-btn">Preview</a>
-          </div>
-        </div>
-
-        <!-- Chemistry -->
-        <div class="card" data-dept="Chemistry" data-title="Organic Chemistry Basics" data-author="Prof. S. Fatima">
-          <img src="https://tse3.mm.bing.net/th/id/OIP.tx2bBDyJT-pxJpcKE9focAHaIA?cb=12&pid=ImgDet&w=474&h=512&rs=1&o=7&rm=3" alt="Organic Chemistry">
-          <div class="card-content">
-            <h3>Organic Chemistry Basics</h3>
-            <p>Prof. S. Fatima</p>
-            <p>Chemistry</p>
-            <a href="https://www.orimi.com/pdf-test.pdf" target="_blank" class="preview-btn">Preview</a>
-          </div>
-        </div>
-
-        <!-- English -->
-        <div class="card" data-dept="English" data-title="English Literature — Vol 1" data-author="N. Hussain">
-          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="English Literature">
-          <div class="card-content">
-            <h3>English Literature — Vol 1</h3>
-            <p>N. Hussain</p>
-            <p>English</p>
-            <a href="https://www.orimi.com/pdf-test.pdf" target="_blank" class="preview-btn">Preview</a>
-          </div>
-        </div>
-      </section>
-
-      <p id="empty" style="display:none;color:gray;margin-top:20px;">No PDFs found.</p>
-    </main>
+        <p id="empty" style="display:none; color:gray; margin-top:20px;">No PDFs found.</p>
+      </main>
+    </div>
   </div>
 
-  <footer>
-    <p>© 2025 GGCW Library | Follow us on <a href="#">Facebook</a>, <a href="#">Instagram</a>, and <a href="#">YouTube</a>.</p>
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-about">
+        <h3>GGCW Library</h3>
+        <p>Government Graduate College Women Library Management System. Streamline operations and enhance student learning experience.</p>
+        <div class="footer-socials">
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.instagram.com/govt.graduate.college/?hl=en" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="browseBooks.php">Browse Books</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-support">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="loginform.html">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 GGCW Library Management System. All rights reserved.</p>
+    </div>
   </footer>
 
-  <!-- JavaScript -->
   <script>
     const searchInput = document.getElementById('search');
     const clearBtn = document.getElementById('clear');
@@ -133,7 +125,6 @@
     const empty = document.getElementById('empty');
     let selectedDept = 'All';
 
-    // Department filter
     deptButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         deptButtons.forEach(b => b.classList.remove('selected'));
@@ -143,7 +134,6 @@
       });
     });
 
-    // Search filter
     searchInput.addEventListener('input', filterCards);
     clearBtn.addEventListener('click', () => {
       searchInput.value = '';
@@ -153,12 +143,10 @@
     function filterCards() {
       const query = searchInput.value.toLowerCase();
       let visibleCount = 0;
-
       cards.forEach(card => {
         const title = card.dataset.title.toLowerCase();
         const author = card.dataset.author.toLowerCase();
         const dept = card.dataset.dept;
-
         const matchDept = selectedDept === 'All' || dept === selectedDept;
         const matchQuery = !query || title.includes(query) || author.includes(query);
 
@@ -169,7 +157,6 @@
           card.style.display = 'none';
         }
       });
-
       empty.style.display = visibleCount === 0 ? 'block' : 'none';
     }
   </script>

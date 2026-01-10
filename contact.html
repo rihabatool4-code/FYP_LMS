@@ -9,25 +9,33 @@
 </head>
 <body>
 
-     <!-- Navigation Bar -->
-  <header class="navbar">
-    <div class="logo">📘 GGCW Library</div>
-    <nav>
-      <ul>
-        <li><a href="Home.html">Home</a></li>
-       <li><a  href="index.html">Browse Books</a></li>
-        <li><a href="first.html">PDFs</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a class='active' href="contact.html">Contact</a></li>
-        <li><a href="admin.html">Admin Dashboard</a></li>
-        <li><a href="stdash.html">Student Dashboard</a></li>
-      </ul>
-    </nav>
-    <div class="auth-buttons">
-      <button class="login-btn" id="loginformBtn">Login</button>
-      <button class="register-btn" id="registerBtn">Register</button>
-    </div>
-  </header>
+  <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="browseBooks.php">Browse Books</a></li>
+                <li><a href="Pdf.html">PDFs</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a class="active" href="contact.html">Contact</a></li>
+
+                <li><a href="admin.php">Admin Dashboard</a></li>
+
+                <li><a href="stdash.html">Student Dashboard</a></li>
+                <li><a href="donationbooks.html">Donation</a></li>
+            </ul>
+        </nav>
+
+        <div class="auth-buttons">
+            <button class="login-btn" id="loginformBtn">Login</button>
+            <button class="register-btn" id="registerBtn">Register</button>
+        </div>
+    </header>
+
 
     <section class="hero-contact">
         <div class="hero-overlay">
@@ -137,23 +145,40 @@
         </div>
     </section>
     
-    <footer class="main-footer">
-        <div class="container footer-grid">
-            <div class="footer-logo">GGCW Library &copy; 2025</div>
+    <!--Footer-->
+   <footer class="footer">
+        <div class="footer-top container">
+            <div class="footer-about">
+                <h3>GGCW Library</h3>
+                <p>Government Graduate College Women Library Management System. Streamline operations and enhance student learning experience.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="browseBooks.php">Browse Books</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-support">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="login2.html">Login</a></li>
+                    <li><a href="reg.html">Register</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">FAQ</a></li>
                 </ul>
             </div>
-            <div class="footer-social">
-                <h4>Connect</h4>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 GGCW Library Management System. All rights reserved.</p>
         </div>
     </footer>
 

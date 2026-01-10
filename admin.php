@@ -46,7 +46,7 @@ $pending = 0;
         <nav>
             <ul>
                 <li><a href="Home.html">Home</a></li>
-                <li><a href="browseBooks.html">Browse Books</a></li>
+                <li><a href="browseBooks.php">Browse Books</a></li>
                 <li><a href="first.html">PDFs</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -99,7 +99,7 @@ $pending = 0;
         </div>
 
         <div class="actions">
-            <div class="action-box" onclick="window.location.href='bookman.php'">
+            <div class="action-box" onclick="window.location.href='bookmanagement.php'">
                 <i class="fa-solid fa-book"></i>
                 <h4>Manage Books</h4>
                 <p>Add, update, or delete book records</p>

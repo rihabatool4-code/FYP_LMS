@@ -1,5 +1,4 @@
 <?php
-// Database connection
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -10,145 +9,206 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Fetch books
-$qry = "SELECT * FROM addbook ORDER BY id DESC";
-$result = mysqli_query($conn, $qry);
-$books = mysqli_fetch_all($result, MYSQLI_ASSOC);
+// CATEGORY DEFAULT IMAGES
+$categoryImages = [
+    "Computer Science" => "Pics/cs.jpg",
+    "Literature"       => "Pics/literature.jpg",
+    "Science"          => "Pics/science.jpg",
+    "Mathematics"      => "Pics/math.jpg",
+    "Psychology"       => "Pics/psychology.jpg",
+    "History"          => "Pics/history.jpg",
+    "Information Technology" => "Pics/it.jpg",
+    "Economics"        => "Pics/economics.jpg"
+];
+$defaultImage = "Pics/default.jpg";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GGCW Library - Browse Books</title>
-  <link rel="stylesheet" href="browseBooks.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Books - GGCW Library</title>
+<link rel="stylesheet" href="browseBooks.css?v=<?php echo time(); ?>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <header class="navbar">
+<header class="navbar">
     <div class="logo-container">
-      <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
+        <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
     </div>
+
     <nav>
-      <ul>
-        <li><a href="Home.html">Home</a></li>
-        <li><a class="active" href="browseBooks.php">Browse Books</a></li>
-        <li><a href="Pdf.html">PDFs</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="admin.html">Admin Dashboard</a></li>
-        <li><a href="stdash.html">Student Dashboard</a></li>
-        <li><a href="donationbooks.html">Donation Books</a></li>
-      </ul>
-    </nav>
-    <div class="auth-buttons">
-      <button class="login-btn" id="loginformBtn">Login</button>
-      <button class="register-btn" id="registerBtn">Register</button>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Browse Our Collection</h1>
-      <p>Discover thousands of books in our GGCW library collection. Search by title, author, category, or keywords.</p>
-    </div>
-  </section>
-
-  <!-- Search Section -->
-  <div class="book-search-section">
-    <h4>Search Books</h4>
-    <div class="search-box">
-      <input type="text" id="searchInput" class="search-input" placeholder="Search by title, author, or keywords...">
-      <select class="dropdown" id="fieldSelect">
-        <option value="All">All Fields</option>
-        <option value="Title">Title</option>
-        <option value="Author">Author</option>
-        <option value="Category">Category</option>
-      </select>
-      <button class="search-btn" id="searchBtn">Search</button>
-    </div>
-  </div>
-
-  <!-- Available Books Section -->
-  <section class="available-books">
-    <div class="books-layout">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <h3>Departments</h3>
-        <ul class="department-list">
-          <li data-category="All" class="active">All</li>
-          <li data-category="Computer Science">Computer Science</li>
-          <li data-category="Literature">Literature</li>
-          <li data-category="Science">Science</li>
-          <li data-category="Mathematics">Mathematics</li>
-          <li data-category="Psychology">Psychology</li>
-          <li data-category="History">History</li>
+        <ul>
+            <li><a href="Home.html">Home</a></li>
+            <li><a class="active" href="browseBooks.php">Browse Books</a></li>
+            <li><a href="Pdf.html">PDFs</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="admin.php">Admin Dashboard</a></li>
+            <li><a href="stdash.html">Student Dashboard</a></li>
+            <li><a href="donationbooks.html">Donation</a></li>
         </ul>
-      </aside>
+    </nav>
 
-      <!-- Book Grid -->
-      <div class="books-grid" id="booksGrid">
+    <div class="auth-buttons">
+        <button class="login-btn" id="loginformBtn">Login</button>
+        <button class="register-btn" id="registerBtn">Register</button>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="animate-text">Browse Our Collection</h1>
+        <p class="animate-text-delay">Find your next favorite book from our extensive library.</p>
+    </div>
+</section>
+
+<div class="search-container">
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search by title, author, or keyword...">
+        <button id="searchBtn"><i class="fa fa-search"></i> Search</button>
+    </div>
+</div>
+
+<main class="main-container">
+    <aside class="sidebar">
+        <h3>Categories</h3>
+        <ul class="category-list">
+            <li class="active" data-filter="all">All Departments</li>
+            <li data-filter="information technology">Information Technology</li>
+            <li data-filter="psychology">Psychology</li>
+            <li data-filter="computer science">Computer Science</li>
+            <li data-filter="mathematics">Mathematics</li>
+            <li data-filter="education">Education</li>
+            <li data-filter="islamiyat">Islamiyat</li>
+            <li data-filter="economics">Economics</li>
+
+        </ul>
+    </aside>
+
+    <div class="books-grid" id="booksGrid">
         <?php
-        if(count($books) > 0){
-            foreach($books as $book){
-                echo "<div class='book-card available'>
-                        <h3>{$book['Title']}</h3>
-                        <p>by {$book['Author']}</p>
-                        <span class='category'>{$book['Category']}</span>
-                        <p>Acc No: {$book['Accno']}</p>
-                        <button class='request-btn'>Request</button>
-                      </div>";
+        $result = mysqli_query($conn, "SELECT * FROM addbook ORDER BY id DESC");
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $bookImg = !empty($row['Image']) ? $row['Image'] : ($categoryImages[$row['Category']] ?? $defaultImage);
+                $dataContent = htmlspecialchars(strtolower($row['Content']), ENT_QUOTES); // escape quotes
+                ?>
+                <div class="book-card" 
+                     data-category="<?php echo strtolower($row['Category']); ?>" 
+                     data-title="<?php echo htmlspecialchars(strtolower($row['Title']), ENT_QUOTES); ?>"
+                     data-author="<?php echo htmlspecialchars(strtolower($row['Author']), ENT_QUOTES); ?>"
+                     data-content="<?php echo $dataContent; ?>">
+                    
+                    <div class="book-img-wrapper">
+                        <img src="<?php echo $bookImg; ?>" onerror="this.src='Pics/default.jpg'">
+                    </div>
+                    
+                    <div class="book-info">
+                        <span class="badge"><?php echo $row['Category']; ?></span>
+                        <h3><?php echo htmlspecialchars($row['Title']); ?></h3>
+                        <p class="author">By <?php echo htmlspecialchars($row['Author']); ?></p>
+                        <p class="acc-no">Acc No: <?php echo $row['Accno']; ?></p>
+                    </div>
+
+                    <div class="book-actions">
+                        <?php if(!empty($row['Pdf_file'])): ?>
+                            <a href="<?php echo $row['Pdf_file']; ?>" target="_blank" class="btn-pdf">View PDF</a>
+                        <?php endif; ?>
+                        <a href="request.php?id=<?php echo $row['id']; ?>" class="btn-request">Request</a>
+                    </div>
+                </div>
+                <?php
             }
         } else {
-            echo "<p style='text-align:center; font-size:18px;'>No books available. Please add from Book Management.</p>";
+            echo "<div class='empty-msg'>No books found in the database.</div>";
         }
+        mysqli_close($conn);
         ?>
-      </div>
     </div>
-  </section>
+</main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="footer-about">
-        <h3>GGCW Library</h3>
-        <p>Government Graduate College Women Library Management System. Streamline operations and enhance student learning experience.</p>
-      </div>
-    </div>
-  </footer>
+    <!--footer-->
 
-  <!-- Scripts -->
-  <script>
-    document.getElementById("registerBtn").addEventListener("click", function () {
-      window.location.href = "register.html";
-    });
-    document.getElementById("loginformBtn").addEventListener("click", function () {
-      window.location.href = "loginform.html";
-    });
+      <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-about">
+                <h3>GGCW Library</h3>
+                <p>Government Graduate College Women Library Management System. Streamline operations and enhance student learning experience.</p>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/groups/1232103560626611/"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/govt.graduate.college/?hl=en" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="browseBooks.html">Browse Books</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-support">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="loginform.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Made with Readdy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 GGCW Library Management System. All rights reserved. Built with modern technology for better library management.</p>
+        </div>
+    </footer>
 
-    // Department filter (client-side)
-    const deptItems = document.querySelectorAll(".department-list li");
-    const bookCards = document.querySelectorAll(".book-card");
+<script>
+    const categoryLinks = document.querySelectorAll('.category-list li');
+    const bookCards = document.querySelectorAll('.book-card');
+    const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchInput');
 
-    deptItems.forEach(item => {
-      item.addEventListener("click", () => {
-        deptItems.forEach(li => li.classList.remove("active"));
-        item.classList.add("active");
-        const selectedDept = item.dataset.category;
+    function filterBooks() {
+        const searchText = searchInput.value.toLowerCase();
+        const activeCategory = document.querySelector('.category-list li.active').getAttribute('data-filter');
 
         bookCards.forEach(card => {
-          if(selectedDept === "All" || card.querySelector('.category').textContent === selectedDept){
-            card.style.display = "block";
-          } else {
-            card.style.display = "none";
-          }
+            const cardCat = card.getAttribute('data-category');
+            const cardTitle = card.getAttribute('data-title');
+            const cardAuthor = card.getAttribute('data-author');
+            const cardContent = card.getAttribute('data-content');
+
+            const matchesSearch = cardTitle.includes(searchText) || cardAuthor.includes(searchText) || cardCat.includes(searchText) || cardContent.includes(searchText);
+            const matchesCategory = activeCategory === 'all' || cardCat === activeCategory;
+
+            card.style.display = (matchesSearch && matchesCategory) ? 'flex' : 'none';
         });
-      });
+    }
+
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            categoryLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            filterBooks();
+        });
     });
-  </script>
+
+    searchBtn.addEventListener('click', filterBooks);
+    searchInput.addEventListener('keyup', filterBooks);
+
+    document.getElementById("registerBtn").addEventListener("click", () => window.location.href = "register.html");
+    document.getElementById("loginformBtn").addEventListener("click", () => window.location.href = "loginform.html");
+</script>
+
 </body>
 </html>
