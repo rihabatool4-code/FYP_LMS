@@ -71,7 +71,7 @@
 
       <button type="submit">Submit</button>
 
-      <p class="login-text">Already have an account? <a href="#">Sign in here</a></p>
+      <p class="login-text">Already have an account? <a href="loginform.php">Sign in here</a></p>
     </form>
   </div>
 

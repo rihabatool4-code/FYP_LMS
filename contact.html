@@ -4,38 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GSCW Library - Contact Us</title>
-    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="contactpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
   <!-- Navigation Bar -->
-    <header class="navbar">
-        <div class="logo-container">
-            <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
-        </div>
-
-        <nav>
-            <ul>
-                <li><a href="Home.html">Home</a></li>
-                <li><a href="browseBooks.php">Browse Books</a></li>
-                <li><a href="Pdf.html">PDFs</a></li>
-                <li><a href="about.php">About</a></li>
-                <li><a class="active" href="contact.html">Contact</a></li>
-
-                <li><a href="admin.php">Admin Dashboard</a></li>
-
-                <li><a href="stdash.html">Student Dashboard</a></li>
-                <li><a href="donationbooks.html">Donation</a></li>
-            </ul>
-        </nav>
-
-        <div class="auth-buttons">
-            <button class="login-btn" id="loginformBtn">Login</button>
-            <button class="register-btn" id="registerBtn">Register</button>
-        </div>
-    </header>
-
+  <header class="navbar">
+    <div class="logo-container">
+    <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
+</div>
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+       <li><a  href="browseBooks.php">Browse Books</a></li>
+        <li><a href="Pdf.html">PDFs</a></li>
+        <li><a href="aboutpage.html">About</a></li>
+        <li><a class="active" href="contact.html">Contact</a></li>
+        <li><a href="admin.php">Admin Dashboard</a></li>
+        <li class="dropdown">
+                <a href="#" >Dashboards <i class="fa-solid fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="staffdashboard.html"><i class="fa-solid fa-user-tie"></i> Staff Portal</a>
+                    <a href="stdash.html"><i class="fa-solid fa-user-graduate"></i> Student Portal</a>
+                </div>
+            </li>
+        <li><a href="donationbooks.html">Donation</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <button class="login-btn" id="loginformBtn">Login</button>
+      <button class="register-btn" id="registerBtn">Register</button>
+    </div>
+  </header>
 
     <section class="hero-contact">
         <div class="hero-overlay">
@@ -59,14 +60,13 @@
                 <div class="contact-card email-card">
                     <i class="fas fa-envelope"></i>
                     <h3>Email</h3>
-                    <p>www.@ggcwlibrary.com</p>
+                    <p>info@ggcwlibrary.com</p>
                     <p class="details-link">Send Email</p>
                 </div>
                 <div class="contact-card address-card">
                     <i class="fas fa-map-marker-alt"></i>
                     <h3>Address</h3>
-                    <p>Govt College for Women</p>
-                    <p>Satellite Town,Gujranwala</p>
+                    <p>Govt College for Women, Satellite Town, Gujranwala</p>
                     <p class="details-link">View Map</p>
                 </div>
             </div>
@@ -91,7 +91,7 @@
         </section>
     </main>
     
-    <hr>
+    <hr class="section-divider">
 
     <section class="library-hours-section">
         <div class="container library-hours-container">
@@ -116,80 +116,68 @@
         </div>
     </section>
     
-    <hr>
+    <hr class="section-divider">
 
     <section class="find-us-section">
         <div class="container">
             <h2>Find Us</h2>
-
             <div class="map-placeholder">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3381.996144889606!2d74.1950073149495!3d32.19692498115797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391f298f24458f2d%3A0x629f632c02c918a0!2sGovt.%20College%20for%20Women%2C%20Satellite%20Town%20Gujranwala!5e0!3m2!1sen!2spk!4v1678890000000!5m2!1sen!2spk" 
-                    width="100%" 
-                    height="100%" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3377.348348!2d74.19!3d32.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCMDknMDAuMCJOIDc0wrAxMScwMC4wIkU!5e0!3m2!1sen!2s!4v123456789" 
+                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
-
             <div class="location-details">
                 <div class="address-box">
                     <h3>Main Library Address</h3>
-                    <p>GGCW Library</p>
-                    <p>Govt College for Women</p>
+                    <p>GGCW Library, Govt College for Women</p>
                     <p>Satellite Town, Gujranwala</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <!--Footer-->
-   <footer class="footer">
-        <div class="footer-top container">
+     <!--footer-->
+
+      <footer class="footer">
+        <div class="footer-top">
             <div class="footer-about">
                 <h3>GGCW Library</h3>
                 <p>Government Graduate College Women Library Management System. Streamline operations and enhance student learning experience.</p>
                 <div class="footer-socials">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/groups/1232103560626611/"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/govt.graduate.college/?hl=en" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
                 </div>
             </div>
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="Home.html">Home</a></li>
-                    <li><a href="browseBooks.php">Browse Books</a></li>
-                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="browseBooks.html">Browse Books</a></li>
+                    <li><a href="aboutpage.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-support">
                 <h4>Support</h4>
                 <ul>
-                    <li><a href="login2.html">Login</a></li>
-                    <li><a href="reg.html">Register</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <li><a href="loginform.php">Login</a></li>
+                    <li><a href="register.php">Register</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 GGCW Library Management System. All rights reserved.</p>
+            <p>© 2025 GGCW Library Management System. All rights reserved. Built with modern technology for better library management.</p>
         </div>
     </footer>
 
     <script>
-
-        document.getElementById("registerBtn").addEventListener("click", function () {
-            window.location.href = "reg.html";
-        });
-        document.getElementById("loginformBtn").addEventListener("click", function () {
-            window.location.href = "login2.html";
-        });
+        document.getElementById("registerBtn").onclick = () => window.location.href = "register.php";
+        document.getElementById("loginformBtn").onclick = () => window.location.href = "loginform.php";
     </script>
 </body>
 </html>

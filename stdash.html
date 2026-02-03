@@ -4,150 +4,463 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard - GGCW Library</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="stdash.css"> 
+
+    <style>
+        /* --- GLOBAL RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        :root {
+            --primary-color: #2a62ff;
+            --primary-hover: #1e52e8;
+            --background-light: #f4f7fa;
+            --text-dark: #1f2937;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- KEYFRAME ANIMATIONS (From Admin) --- */
+        @keyframes fadeInRise {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(42, 98, 255, 0.4); }
+            70% { box-shadow: 0 0 0 5px rgba(42, 98, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(42, 98, 255, 0); }
+        }
+
+       /* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px 15px 60px; /* Top, Right, Bottom, Left */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  animation: slideDown 0.5s ease-out;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* --- NEW LOGO STYLES FOR IMAGE UPLOAD --- */
+
+/* Ensures the logo container doesn't force a specific shape or background, 
+   just acts as a flex container */
+.logo-container {
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start; /* Align left */
+    height: 50px; /* Set a standard height for the logo area */
+    transition: all 0.3s ease;
+}
+
+/* Styles the actual logo image */
+.ggcw-logo {
+    height: 150%; /* Make the image fill the height of the container */
+    width: auto; /* Allow the width to scale proportionally */
+    object-fit: contain;
+    padding: 0; /* Optional: Add slight vertical padding if needed */
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.ggcw-logo:hover {
+    transform: scale(1.05); /* Add a slight zoom effect on hover */
+}
+/* --- END NEW LOGO STYLES --- */
+
+.navbar .logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #2a62ff;
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+  width: 100%;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: #2a62ff;
+}
+/* ============================================================
+   4. ATTRACTIVE DROPDOWN MENU
+   ============================================================ */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 210px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    z-index: 1100;
+    top: 120%;
+    left: 0;
+    overflow: hidden;
+    padding: 8px 0;
+    border: 1px solid #f0f0f0;
+    animation: fadeInRise 0.4s ease-out;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #444 !important;
+    padding: 12px 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.dropdown-content a i {
+    color: var(--primary-color);
+    font-size: 16px;
+    width: 20px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f3f6ff;
+    color: var(--primary-color) !important;
+    padding-left: 22px; /* Slight push effect on hover */
+}
+
+
+.auth-buttons button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-buttons button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.auth-buttons button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.login-btn {
+  background: transparent;
+  color: #2a62ff;
+  border: 2px solid #2a62ff;
+}
+
+.login-btn:hover {
+  background: #2a62ff;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(42, 98, 255, 0.3);
+}
+
+.register-btn {
+  background: #2a62ff;
+  color: white;
+}
+
+.register-btn:hover {
+  background: #2a62ff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(42, 98, 255, 0.4);
+}
+
+        /* --- MAIN CONTENT --- */
+        main { padding: 40px 60px; max-width: 1300px; margin: 0 auto; }
+        main h2 { font-size: 28px; font-weight: 700; animation: fadeInRise 0.8s ease-out; }
+        .subtitle { color: #6b7280; margin-bottom: 35px; animation: fadeInRise 0.8s ease-out 0.2s backwards; }
+
+        /* --- STATS CARDS (Staggered Animation) --- */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .stats .card {
+            background: #ffffff; padding: 25px; border-radius: 12px;
+            box-shadow: var(--card-shadow); position: relative; overflow: hidden;
+            animation: fadeInRise 0.6s ease-out forwards; opacity: 0;
+        }
+        /* Staggered Delay */
+        .stats .card:nth-child(1) { animation-delay: 0.3s; }
+        .stats .card:nth-child(2) { animation-delay: 0.4s; }
+        .stats .card:nth-child(3) { animation-delay: 0.5s; }
+        .stats .card:nth-child(4) { animation-delay: 0.6s; }
+
+        .stats .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; }
+        .blue::before { background: #0d47a1; }
+        .green::before { background: #4caf50; }
+        .red::before { background: #e53935; }
+        .orange::before { background: #fb8c00; }
+
+        /* --- DASHBOARD SECTIONS --- */
+        .main-sections { display: grid; grid-template-columns: 2fr 1fr; gap: 25px; margin-bottom: 40px; }
+        .content-box { 
+            background: white; padding: 30px; border-radius: 12px; 
+            box-shadow: var(--card-shadow); animation: fadeInRise 0.6s ease-out 0.7s forwards; opacity: 0;
+        }
+        .content-box h3 { color: var(--primary-color); margin-bottom: 20px; font-size: 18px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+
+        .book-item { padding: 15px 0; border-bottom: 1px solid #f9f9f9; }
+        .book-title { font-weight: 600; font-size: 15px; }
+        .status-indicator { font-size: 12px; margin-top: 5px; font-weight: 600; }
+        .remaining { color: #059669; }
+
+        /* --- ACTIVITY (Admin Style) --- */
+        .recent-activities h2 { font-size: 18px; font-weight: 600; margin-bottom: 20px; animation: fadeInRise 0.8s ease-out 1.2s backwards; }
+        .activity-item {
+            display: flex; align-items: center; justify-content: space-between;
+            background: #ffffff; padding: 16px 20px; margin-bottom: 12px;
+            border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary-color);
+            animation: fadeInRise 0.6s ease-out forwards; opacity: 0;
+            animation-delay: 1.3s;
+        }
+        .status.completed { background: #ecfdf5; color: #059669; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; animation: pulse 2s infinite; }
+
+      /* --- FOOTER STYLES FIXED --- */
+.footer {
+    background-color: #0f172a;
+    color: #cbd5e1;
+    padding: 60px 5% 20px; /* Padding adjust ki */
+    border-top: 5px solid #1a73e8;
+    opacity: 0; /* Shuru mein invisible */
+    animation: fadeInRise 0.8s ease-out forwards; /* Animation trigger */
+    animation-delay: 0.5s;
+    margin-top: 50px;
+    width: 100%;
+}
+
+/* Ye animation missing thi jiski wajah se footer nahi dikh raha tha */
+@keyframes fadeInRise {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-about { flex: 1 1 300px; }
+.footer-about h3 { color: #1a73e8; margin-bottom: 10px; font-weight: 700; }
+.footer-about p { font-size: 14px; margin-bottom: 15px; color: #94a3b8; }
+
+.footer-socials a { 
+    margin-right: 15px; 
+    font-size: 20px; 
+    text-decoration: none; 
+    color: #ffffffcc; 
+    transition: 0.3s;
+}
+.footer-socials a:hover { color: #1a73e8; transform: translateY(-3px); }
+
+.footer-links, .footer-support { flex: 1 1 180px; }
+.footer-links h4, .footer-support h4 { color: #ffffff; margin-bottom: 15px; font-size: 18px; }
+.footer-links ul, .footer-support ul { list-style: none; padding: 0; }
+.footer-links li, .footer-support li { margin-bottom: 10px; }
+
+.footer-links a, .footer-support a { 
+    text-decoration: none; 
+    color: #cbd5e1; 
+    font-size: 14px; 
+    transition: 0.3s;
+}
+.footer-links a:hover, .footer-support a:hover { 
+    color: white; 
+    padding-left: 8px; 
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 13px;
+    color: #94a3b8;
+    border-top: 1px solid #1e293b;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+        /* Responsive */
+        @media (max-width: 900px) { .main-sections { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="logo-container">
+   <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo-container">
     <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
 </div>
-        <nav>
-            <ul>
-                <li><a href="Home.html">Home</a></li>
-                <li><a href="browseBooks.html">Browse Books</a></li>
-                <li><a href="Pdf.html">PDFs</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="admin.html">Admin Dashboard</a></li>
-                <li><a class="active" href="stdashboard.html">Student Dashboard</a></li>
-                <li><a href="donationbooks.html">Donation</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            <button class="login-btn" id="loginformBtn">Login</button>
-            <button class="register-btn" id="registerBtn">Register</button>
-        </div>
-    </header>
+    <nav>
+      <ul>
+        <li><a  href="Home.html">Home</a></li>
+       <li><a href="browseBooks.php">Browse Books</a></li>
+        <li><a href="Pdf.html">PDFs</a></li>
+        <li><a href="aboutpage.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin.php">Admin Dashboard</a></li>
+        <li class="dropdown">
+                <a class="active" href="#" >Dashboards <i class="fa-solid fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="staffdashboard.html"><i class="fa-solid fa-user-tie"></i> Staff Portal</a>
+                    <a href="stdash.html"><i class="fa-solid fa-user-graduate"></i> Student Portal</a>
+                </div>
+            </li>
+        <li><a href="donationbooks.html">Donation</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <button class="login-btn" id="loginformBtn">Login</button>
+      <button class="register-btn" id="registerBtn">Register</button>
+    </div>
+  </header>
 
-    <main class="container">
-        <div class="page-header">
-            <h2>Student Dashboard</h2>
-            <p class="subtitle">Welcome back! Manage your books and library account</p>
-        </div>
+    <main>
+        <h2>Student Dashboard</h2>
+        <p class="subtitle">Welcome back! Manage your books and account</p>
 
         <div class="stats">
-            <div class="card blue">
-                <h3>2</h3>
-                <p>Current Books</p>
+            <div class="card blue"><h3>2</h3><p>Current Books</p></div>
+            <div class="card green"><h3>5</h3><p>Issued Books</p></div>
+            <div class="card red"><h3>1</h3><p>Overdue Books</p></div>
+            <div class="card orange"><h3>3</h3><p>Pending Requests</p></div>
+        </div>
+
+        <div class="main-sections">
+            <div class="content-box">
+                <h3>Currently Issued Books</h3>
+                <div class="book-item">
+                    <p class="book-title">Clean Code</p>
+                    <p style="font-size: 13px; color: #6b7280;">by Robert C. Martin • Issued: 2024-01-15</p>
+                    <p class="status-indicator remaining"><i class="fa-solid fa-circle-check"></i> 8 days remaining</p>
+                </div>
+                <div class="book-item">
+                    <p class="book-title">Introduction to Algorithms</p>
+                    <p style="font-size: 13px; color: #6b7280;">Due: 2024-02-10</p>
+                    <button class="register-btn" style="padding: 5px 15px; font-size: 12px; margin-top: 10px;" onclick="alert('Fine Paid!')">Mark as Paid</button>
+                </div>
             </div>
-            <div class="card green">
-                <h3>342</h3>
-                <p>Issued Books</p>
-            </div>
-            <div class="card red">
-                <h3>28</h3>
-                <p>Overdue Books</p>
-            </div>
-            <div class="card purple">
-                <h3>856</h3>
-                <p>Total Students</p>
-            </div>
-            <div class="card orange">
-                <h3>15</h3>
-                <p>Pending Requests</p>
+
+            <div class="content-box">
+                <h3>Pending Requests</h3>
+                <div class="book-item">
+                    <p class="book-title">The Great Gatsby</p>
+                    <p style="font-size: 12px; color: #9ca3af;">Requested: 2024-01-20</p>
+                </div>
             </div>
         </div>
 
-        <section class="main-sections">
-            <div class="card issued-books">
-                <div class="card-header">
-                    <h3>Currently Issued Books</h3>
-                    <a href="index.html" class="browse-link">Browse More Books <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-                <div class="book-item">
-                    <p class="book-title">Clean Code</p>
-                    <p class="book-details">by Robert C. Martin</p>
-                    <p class="book-dates">Issued: 2024-01-15 | Due: 2024-02-15</p>
-                    <p class="status-indicator remaining"><i class="fa-solid fa-check-circle"></i> 8 days remaining</p>
-                    <div class="action-group">
-                        <button class="action-btn">Renew</button>
-                        <span class="renew-detail">Renewed: 0/2</span>
+        <section class="recent-activities">
+            <h2>Recent Activity</h2>
+            <div class="activity-item">
+                <div style="display: flex; align-items: center;">
+                    <i class="fa-solid fa-book-open" style="color: var(--primary-color); margin-right: 15px;"></i>
+                    <div>
+                        <span style="font-weight: 600; font-size: 14px;">Psychology of Learning</span><br>
+                        <span style="font-size: 12px; color: #94a3b8;">Returned on 2024-01-10</span>
                     </div>
                 </div>
-                <div class="book-item overdue">
-                    <p class="book-title">Introduction to Algorithms</p>
-                    <p class="book-details">by Thomas H. Cormen</p>
-                    <p class="book-dates">Issued: 2024-01-10 | Due: 2024-02-10</p>
-                    <p class="status-indicator overdue-text"><i class="fa-solid fa-hand-holding-dollar"></i> 3 days overdue (Fine: $6)</p>
-                    <div class="action-group">
-                        <button class="action-btn renew-overdue">Pay Fine & Renew</button>
-                        <span class="renew-detail">Renewed: 0/2</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card pending-requests">
-                <div class="card-header">
-                    <h3>Pending Book Requests</h3>
-                </div>
-                <div class="request-item">
-                    <p class="request-title">The Great Gatsby</p>
-                    <p class="request-details">by F. Scott Fitzgerald</p>
-                    <p class="request-date">Requested: 2024-01-20</p>
-                    <span class="position-badge"><i class="fa-solid fa-list-ol"></i> Position #3 in queue</span>
-                    <button class="action-btn cancel-btn">Cancel</button>
-                </div>
+                <span class="status completed">Returned</span>
             </div>
         </section>
-
-        <section class="card history-section recent-activities-panel">
-            <h2>Recent Book History</h2>
-            <div class="history-table">
-                <div class="activity-item">
-                    <div class="left-content">
-                        <i class="fa-solid fa-circle-check completed-icon"></i>
-                        <div class="details">
-                            <span class="user">Psychology of Learning</span>
-                            <span class="book-details">John B. Watson • Returned: 2024-01-10</span>
-                        </div>
-                    </div>
-                    <span class="status completed">Returned</span>
-                </div>
-                <div class="activity-item">
-                    <div class="left-content">
-                        <i class="fa-solid fa-circle-check completed-icon"></i>
-                        <div class="details">
-                            <span class="user">World History</span>
-                            <span class="book-details">Roger B. Beck • Returned: 2023-12-18</span>
-                        </div>
-                    </div>
-                    <span class="status completed">Returned</span>
-                </div>
-            </div>
-        </section>
-
-        <div class="actions">
-            <div class="action-box" onclick="window.location.href='index.html'">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <h4>Search Books</h4>
-                <p>Find books by title, author, or category</p>
-            </div>
-
-            <div class="action-box" onclick="window.location.href='issued_books.html'">
-                <i class="fa-solid fa-book-open-reader"></i>
-                <h4>My Books</h4>
-                <p>View currently issued books and due dates</p>
-            </div>
-            </div>
-
     </main>
-    
-  <!--footer-->
-    <footer class="footer">
+
+   <!--footer-->
+
+      <footer class="footer">
         <div class="footer-top">
             <div class="footer-about">
                 <h3>GGCW Library</h3>
@@ -165,10 +478,10 @@
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="Home.html">Home</a></li>
-                    <li><a href="browseBooks.html">Browse Books</a></li>
-                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="browseBooks.php">Browse Books</a></li>
+                    <li><a href="aboutpage.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Help Center</a></li>
+                    
                 </ul>
             </div>
             <div class="footer-support">
@@ -176,9 +489,7 @@
                 <ul>
                     <li><a href="loginform.html">Login</a></li>
                     <li><a href="register.html">Register</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Made with Readdy</a></li>
+                    
                 </ul>
             </div>
         </div>
@@ -187,14 +498,10 @@
         </div>
     </footer>
 
-    <script>
-        document.getElementById("registerBtn").addEventListener("click", function () {
-            window.location.href = "register.html";
-        });
 
-        document.getElementById("loginformBtn").addEventListener("click", function () {
-            window.location.href = "loginform.html";
-        });
+    <script>
+        document.getElementById("registerBtn").onclick = () => window.location.href = "register.php";
+        document.getElementById("loginformBtn").onclick = () => window.location.href = "loginform.php";
     </script>
 </body>
 </html>

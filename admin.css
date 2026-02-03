@@ -91,7 +91,7 @@ body {
     height: 150%; /* Make the image fill the height of the container */
     width: auto; /* Allow the width to scale proportionally */
     object-fit: contain;
-    padding: 5px 0; /* Optional: Add slight vertical padding if needed */
+    padding: 0; /* Optional: Add slight vertical padding if needed */
     transition: transform 0.3s ease;
     animation: fadeIn 0.8s ease-out;
 }
@@ -140,6 +140,57 @@ body {
 .navbar a.active {
   color: #2a62ff;
 }
+/* ============================================================
+   4. ATTRACTIVE DROPDOWN MENU
+   ============================================================ */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 210px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    z-index: 1100;
+    top: 120%;
+    left: 0;
+    overflow: hidden;
+    padding: 8px 0;
+    border: 1px solid #f0f0f0;
+    animation: fadeInRise 0.4s ease-out;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #444 !important;
+    padding: 12px 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.dropdown-content a i {
+    color: var(--primary-color);
+    font-size: 16px;
+    width: 20px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f3f6ff;
+    color: var(--primary-color) !important;
+    padding-left: 22px; /* Slight push effect on hover */
+}
+
 
 .auth-buttons button {
   margin-left: 10px;
@@ -173,27 +224,28 @@ body {
 
 .login-btn {
   background: transparent;
-  color:  #2a62ff;
+  color: #2a62ff;
   border: 2px solid #2a62ff;
 }
 
 .login-btn:hover {
-  background:  #2a62ff;
+  background: #2a62ff;
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(42, 98, 255, 0.3);
 }
 
 .register-btn {
-  background:  #2a62ff;
+  background: #2a62ff;
   color: white;
 }
 
 .register-btn:hover {
-  background:  #2a62ff;
+  background: #2a62ff;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(42, 98, 255, 0.4);
 }
+
 
 /* ----------------------------------------------------------------------- */
 /* Main Content & Title */
@@ -469,114 +521,73 @@ main h2 {
 }
 
 
-/* ===== FOOTER STYLING ===== */
+/* --- FOOTER STYLES FIXED --- */
 .footer {
-  background-color: #111827; /* Deep navy background */
-  color: #d1d5db;
-  padding: 60px 60px 25px;
-  font-size: 14px;
+    background-color: #0f172a;
+    color: #cbd5e1;
+    padding: 60px 5% 20px; /* Padding adjust ki */
+    border-top: 5px solid #1a73e8;
+    opacity: 0; /* Shuru mein invisible */
+    animation: fadeInRise 0.8s ease-out forwards; /* Animation trigger */
+    animation-delay: 0.5s;
+    margin-top: 40px;
+    width: 100%;
+}
+
+/* Ye animation missing thi jiski wajah se footer nahi dikh raha tha */
+@keyframes fadeInRise {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .footer-top {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 40px;
-  margin-bottom: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 30px;
 }
 
-.footer-about {
-  flex: 1 1 320px;
+.footer-about { flex: 1 1 300px; }
+.footer-about h3 { color: #1a73e8; margin-bottom: 10px; font-weight: 700; }
+.footer-about p { font-size: 14px; margin-bottom: 15px; color: #94a3b8; }
+
+.footer-socials a { 
+    margin-right: 15px; 
+    font-size: 20px; 
+    text-decoration: none; 
+    color: #ffffffcc; 
+    transition: 0.3s;
+}
+.footer-socials a:hover { color: #1a73e8; transform: translateY(-3px); }
+
+.footer-links, .footer-support { flex: 1 1 180px; }
+.footer-links h4, .footer-support h4 { color: #ffffff; margin-bottom: 15px; font-size: 18px; }
+.footer-links ul, .footer-support ul { list-style: none; padding: 0; }
+.footer-links li, .footer-support li { margin-bottom: 10px; }
+
+.footer-links a, .footer-support a { 
+    text-decoration: none; 
+    color: #cbd5e1; 
+    font-size: 14px; 
+    transition: 0.3s;
+}
+.footer-links a:hover, .footer-support a:hover { 
+    color: white; 
+    padding-left: 8px; 
 }
 
-.footer-about h2 {
-  color: #ffffff;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.footer-about p {
-  color: #9ca3af;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.footer-socials a {
-  margin-right: 12px;
-  font-size: 20px;
-  text-decoration: none;
-  color: #9ca3af;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.footer-socials a:hover {
-  color: #2a62ff;
-  transform: scale(1.1);
-}
-
-/* Links Section */
-.footer-links,
-.footer-support {
-  flex: 1 1 200px;
-}
-
-.footer-links h3,
-.footer-support h3 {
-  color: #ffffff;
-  margin-bottom: 12px;
-  font-size: 1.1rem;
-}
-
-.footer-links ul,
-.footer-support ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links li,
-.footer-support li {
-  margin-bottom: 10px;
-}
-
-.footer-links a,
-.footer-support a {
-  text-decoration: none;
-  color: #d1d5db;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover,
-.footer-support a:hover {
-  color: #2a62ff;
-}
-
-/* Footer Bottom */
 .footer-bottom {
-  text-align: center;
-  font-size: 13px;
-  color: #9ca3af;
-  border-top: 1px solid #1f2937;
-  padding-top: 20px;
-}
-
-/* Responsive Footer */
-@media (max-width: 768px) {
-  .footer {
-    padding: 40px 30px 20px;
-  }
-
-  .footer-top {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-about,
-  .footer-links,
-  .footer-support {
-    width: 100%;
-  }
-
-  .footer-socials {
-    margin-top: 10px;
-  }
+    text-align: center;
+    font-size: 13px;
+    color: #94a3b8;
+    border-top: 1px solid #1e293b;
+    padding-top: 20px;
+    margin-top: 20px;
 }

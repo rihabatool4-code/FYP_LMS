@@ -1,10 +1,9 @@
-/* register.css */
-
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #f5f8ff;
   margin: 0;
   padding: 0;
+  font-size: 14px; /* Thoda chhota font */
 }
 
 .container {
@@ -12,26 +11,28 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 10px; /* Mobile pe space ke liye */
 }
 
 .form-box {
   background: white;
-  padding: 40px;
+  padding: 30px;      /* pehle 40px tha */
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  box-shadow: 0 0 15px rgba(0,0,0,0.08); /* thoda halka shadow */
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;   /* pehle 500px tha */
 }
 
 .form-box h1 {
-  margin-bottom: 10px;
+  margin-bottom: 8px; /* thoda kam gap */
   color: #111;
+  font-size: 22px;    /* thoda chhota */
 }
 
 .form-box p {
-  margin-bottom: 25px;
+  margin-bottom: 20px; /* thoda kam gap */
   color: #444;
-  font-size: 14px;
+  font-size: 13px;     /* thoda chhota */
 }
 
 input[type="text"],
@@ -40,16 +41,16 @@ input[type="tel"],
 input[type="password"],
 select {
   width: 100%;
-  padding: 12px;
-  margin: 10px 0;
+  padding: 10px;      /* thoda chhota */
+  margin: 8px 0;      /* thoda chhota gap */
   border: 1px solid #ddd;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 14px;    /* thoda chhota */
 }
 
 .row {
   display: flex;
-  gap: 10px;
+  gap: 8px;           /* thoda kam gap */
 }
 
 .row input,
@@ -58,17 +59,17 @@ select {
 }
 
 .checkbox {
-  margin: 15px 0;
+  margin: 12px 0;     /* thoda kam gap */
   display: flex;
   align-items: center;
 }
 
 .checkbox input {
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 .checkbox label {
-  font-size: 13px;
+  font-size: 12px;    /* thoda chhota */
   color: #555;
 }
 
@@ -80,13 +81,13 @@ select {
 button {
   background-color: #0047ab;
   color: white;
-  padding: 14px;
+  padding: 12px;      /* thoda chhota */
   width: 100%;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 15px;    /* thoda chhota */
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 button:hover {
@@ -95,11 +96,37 @@ button:hover {
 
 .login-text {
   text-align: center;
-  margin-top: 20px;
-  font-size: 14px;
+  margin-top: 15px;   /* thoda kam */
+  font-size: 13px;    /* thoda chhota */
 }
 
 .login-text a {
   color: #0047ab;
   text-decoration: none;
+}
+
+/* Responsive for very small screens */
+@media (max-width: 400px) {
+  .form-box {
+    padding: 20px;
+    max-width: 95%;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  select {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .form-box h1 {
+    font-size: 20px;
+  }
 }

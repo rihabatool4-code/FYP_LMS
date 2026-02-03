@@ -219,44 +219,42 @@ mysqli_close($conn);
 </div>
 
     <!--footer-->
-
-      <footer class="footer">
+<footer class="footer">
         <div class="footer-top">
+
             <div class="footer-about">
-                <h3>GGCW Library</h3>
-                <p>Government Graduate College Women Library Management System. Streamline operations and enhance student learning experience.</p>
+                <h2>GGCW Library</h2>
+                <p>Government Graduate College Women Library Management System.</p>
+
                 <div class="footer-socials">
-                    <a href="https://www.facebook.com/groups/1232103560626611/"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/govt.graduate.college/?hl=en" target="_blank">
-        <i class="fa-brands fa-instagram"></i>
-    </a>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#"><i class="fa-brands fa-linkedin"></i></a>
                     <a href="#"><i class="fa-brands fa-twitter"></i></a>
                 </div>
             </div>
+
             <div class="footer-links">
-                <h4>Quick Links</h4>
+                <h3>Quick Links</h3>
                 <ul>
                     <li><a href="Home.html">Home</a></li>
                     <li><a href="browseBooks.html">Browse Books</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Help Center</a></li>
                 </ul>
             </div>
+
             <div class="footer-support">
-                <h4>Support</h4>
+                <h3>Support</h3>
                 <ul>
                     <li><a href="loginform.html">Login</a></li>
                     <li><a href="register.html">Register</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Made with Readdy</a></li>
                 </ul>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <p>© 2025 GGCW Library Management System. All rights reserved. Built with modern technology for better library management.</p>
+            <p>© 2025 GGCW Library Management System. All rights reserved.</p>
         </div>
     </footer>
 

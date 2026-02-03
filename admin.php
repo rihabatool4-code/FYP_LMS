@@ -37,32 +37,34 @@ $pending = 0;
 
 <body>
 
-    <!-- Navigation Bar -->
-    <header class="navbar">
-        <div class="logo-container">
-            <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
-        </div>
-
-        <nav>
-            <ul>
-                <li><a href="Home.html">Home</a></li>
-                <li><a href="browseBooks.php">Browse Books</a></li>
-                <li><a href="first.html">PDFs</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-
-                <li><a class="active" href="admin.php">Admin Dashboard</a></li>
-
-                <li><a href="stdash.html">Student Dashboard</a></li>
-                <li><a href="donationbooks.html">Donation</a></li>
-            </ul>
-        </nav>
-
-        <div class="auth-buttons">
-            <button class="login-btn" id="loginformBtn">Login</button>
-            <button class="register-btn" id="registerBtn">Register</button>
-        </div>
-    </header>
+   <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo-container">
+    <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
+</div>
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+       <li><a  href="browseBooks.php">Browse Books</a></li>
+        <li><a href="Pdf.html">PDFs</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a class="active" href="admin.php">Admin Dashboard</a></li>
+        <li class="dropdown">
+                <a href="#" >Dashboards <i class="fa-solid fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="staffdashboard.html"><i class="fa-solid fa-user-tie"></i> Staff Portal</a>
+                    <a href="stdash.html"><i class="fa-solid fa-user-graduate"></i> Student Portal</a>
+                </div>
+            </li>
+        <li><a href="donationbooks.html">Donation</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <button class="login-btn" id="loginformBtn">Login</button>
+      <button class="register-btn" id="registerBtn">Register</button>
+    </div>
+  </header>
 
     <main>
         <h2>Admin Dashboard</h2>
@@ -105,7 +107,7 @@ $pending = 0;
                 <p>Add, update, or delete book records</p>
             </div>
 
-            <div class="action-box" onclick="window.location.href='issuebook.php'">
+            <div class="action-box" onclick="window.location.href='iissuebook.php'">
                 <i class="fa-solid fa-book-open"></i>
                 <h4>Issued Books</h4>
                 <p>View and manage issued books</p>
@@ -117,7 +119,7 @@ $pending = 0;
                 <p>Manage student registrations</p>
             </div>
 
-            <div class="action-box" onclick="window.location.href='reports.php'">
+            <div class="action-box" onclick="window.location.href='reports.html'">
                 <i class="fa-solid fa-file-lines"></i>
                 <h4>Generate Reports</h4>
                 <p>View detailed library reports</p>
@@ -162,51 +164,50 @@ $pending = 0;
         </section>
     </main>
 
-    <footer class="footer">
+    <!--footer-->
+
+      <footer class="footer">
         <div class="footer-top">
-
             <div class="footer-about">
-                <h2>GGCW Library</h2>
-                <p>Government Graduate College Women Library Management System.</p>
-
+                <h3>GGCW Library</h3>
+                <p>Government Graduate College Women Library Management System. Streamline operations and enhance student learning experience.</p>
                 <div class="footer-socials">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/groups/1232103560626611/"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/govt.graduate.college/?hl=en" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
                     <a href="#"><i class="fa-brands fa-linkedin"></i></a>
                     <a href="#"><i class="fa-brands fa-twitter"></i></a>
                 </div>
             </div>
-
             <div class="footer-links">
-                <h3>Quick Links</h3>
+                <h4>Quick Links</h4>
                 <ul>
                     <li><a href="Home.html">Home</a></li>
                     <li><a href="browseBooks.html">Browse Books</a></li>
-                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="aboutpage.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
-
             <div class="footer-support">
-                <h3>Support</h3>
+                <h4>Support</h4>
                 <ul>
                     <li><a href="loginform.html">Login</a></li>
                     <li><a href="register.html">Register</a></li>
                 </ul>
             </div>
         </div>
-
         <div class="footer-bottom">
-            <p>© 2025 GGCW Library Management System. All rights reserved.</p>
+            <p>© 2025 GGCW Library Management System. All rights reserved. Built with modern technology for better library management.</p>
         </div>
     </footer>
 
     <script>
         document.getElementById("registerBtn").onclick = function () {
-            window.location.href = "register.html";
+            window.location.href = "register.php";
         };
         document.getElementById("loginformBtn").onclick = function () {
-            window.location.href = "loginform.html";
+            window.location.href = "loginform.php";
         };
     </script>
 

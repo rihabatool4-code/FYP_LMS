@@ -34,29 +34,34 @@ $defaultImage = "Pics/default.jpg";
 </head>
 <body>
 
-<header class="navbar">
+<!-- Navigation Bar -->
+  <header class="navbar">
     <div class="logo-container">
-        <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
-    </div>
-
+    <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
+</div>
     <nav>
-        <ul>
-            <li><a href="Home.html">Home</a></li>
-            <li><a class="active" href="browseBooks.php">Browse Books</a></li>
-            <li><a href="Pdf.html">PDFs</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="admin.php">Admin Dashboard</a></li>
-            <li><a href="stdash.html">Student Dashboard</a></li>
-            <li><a href="donationbooks.html">Donation</a></li>
-        </ul>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+       <li><a class="active" href="browseBooks.php">Browse Books</a></li>
+        <li><a href="Pdf.html">PDFs</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin.php">Admin Dashboard</a></li>
+        <li class="dropdown">
+                <a href="#" >Dashboards <i class="fa-solid fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="staffdashboard.html"><i class="fa-solid fa-user-tie"></i> Staff Portal</a>
+                    <a href="stdash.html"><i class="fa-solid fa-user-graduate"></i> Student Portal</a>
+                </div>
+            </li>
+        <li><a href="donationbooks.html">Donation</a></li>
+      </ul>
     </nav>
-
     <div class="auth-buttons">
-        <button class="login-btn" id="loginformBtn">Login</button>
-        <button class="register-btn" id="registerBtn">Register</button>
+      <button class="login-btn" id="loginformBtn">Login</button>
+      <button class="register-btn" id="registerBtn">Register</button>
     </div>
-</header>
+  </header>
 
 <section class="hero">
     <div class="hero-content">
@@ -151,19 +156,17 @@ $defaultImage = "Pics/default.jpg";
                 <ul>
                     <li><a href="Home.html">Home</a></li>
                     <li><a href="browseBooks.html">Browse Books</a></li>
-                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="aboutpage.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Help Center</a></li>
+                  
                 </ul>
             </div>
             <div class="footer-support">
                 <h4>Support</h4>
                 <ul>
-                    <li><a href="loginform.html">Login</a></li>
-                    <li><a href="register.html">Register</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Made with Readdy</a></li>
+                    <li><a href="loginform.php">Login</a></li>
+                    <li><a href="register.php">Register</a></li>
+                    
                 </ul>
             </div>
         </div>
@@ -206,8 +209,8 @@ $defaultImage = "Pics/default.jpg";
     searchBtn.addEventListener('click', filterBooks);
     searchInput.addEventListener('keyup', filterBooks);
 
-    document.getElementById("registerBtn").addEventListener("click", () => window.location.href = "register.html");
-    document.getElementById("loginformBtn").addEventListener("click", () => window.location.href = "loginform.html");
+    document.getElementById("registerBtn").addEventListener("click", () => window.location.href = "register.php");
+    document.getElementById("loginformBtn").addEventListener("click", () => window.location.href = "loginform.php");
 </script>
 
 </body>

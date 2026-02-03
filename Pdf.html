@@ -11,23 +11,29 @@
 
   <header class="navbar">
     <div class="logo-container">
-        <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
+      <img src="Pics/logo.PNG" alt="GGCW Library Logo" class="ggcw-logo">
     </div>
     <nav>
       <ul>
         <li><a href="Home.html">Home</a></li>
         <li><a href="browseBooks.php">Browse Books</a></li>
         <li><a class="active" href="Pdf.html">PDFs</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="aboutpage.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="admin.php">Admin Dashboard</a></li>
-        <li><a href="stdash.html">Student Dashboard</a></li>
+        <li class="dropdown">
+          <a href="#">Dashboards <i class="fa-solid fa-caret-down"></i></a>
+          <div class="dropdown-content">
+            <a href="staffdashboard.html"><i class="fa-solid fa-user-tie"></i> Staff Portal</a>
+            <a href="stdash.html"><i class="fa-solid fa-user-graduate"></i> Student Portal</a>
+          </div>
+        </li>
         <li><a href="donationbooks.html">Donation</a></li>
       </ul>
     </nav>
     <div class="auth-buttons">
-      <button class="login-btn">Login</button>
-      <button class="register-btn">Register</button>
+      <button class="login-btn" id="loginformBtn">Login</button>
+      <button class="register-btn" id="registerBtn">Register</button>
     </div>
   </header>
 
@@ -96,7 +102,7 @@
         <ul>
           <li><a href="Home.html">Home</a></li>
           <li><a href="browseBooks.php">Browse Books</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="aboutpage.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -106,8 +112,7 @@
         <ul>
           <li><a href="loginform.html">Login</a></li>
           <li><a href="register.html">Register</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
+          
         </ul>
       </div>
     </div>
@@ -118,6 +123,11 @@
   </footer>
 
   <script>
+    // Navigation Redirects
+    document.getElementById("registerBtn").onclick = () => window.location.href = "register.php";
+    document.getElementById("loginformBtn").onclick = () => window.location.href = "loginform.php";
+
+    // PDF Filtering Logic
     const searchInput = document.getElementById('search');
     const clearBtn = document.getElementById('clear');
     const deptButtons = document.querySelectorAll('.dept');

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $name       = $_POST['name'];
 $usertype   = $_POST['usertype'];
 $email      = $_POST['email'];
@@ -11,30 +13,37 @@ $pass1      = $_POST['pass1'];
 $host     = "localhost";
 $user     = "root";
 $pass     = "";
-$database = "FYP";
+$database = "fyp";
 
-// Create connection
 $conn = mysqli_connect($host, $user, $pass, $database);
 
-// Check connection
 if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+    die("Connection failed");
 }
 
-// Wrap all values in quotes
-$qry = "INSERT INTO register (Name, UserType, Email, Rollno, Phone, Semester, Department, Password)
-        VALUES ('$name', '$usertype', '$email', $rollno, $mobile, '$semester', '$department', '$pass1')";
+// 🔐 Password hash (recommended)
+$password = password_hash($pass1, PASSWORD_DEFAULT);
 
-// Debug: print query
-echo "Running query: $qry<br>";
+// Insert query
+$qry = "INSERT INTO register 
+(Name, UserType, Email, Rollno, Phone, Semester, Department, Password)
+VALUES 
+('$name', '$usertype', '$email', '$rollno', '$mobile', '$semester', '$department', '$password')";
 
-// Run the query
-if (mysqli_query($conn, $qry) === TRUE) {
-    echo "new records created successfully.";
+if (mysqli_query($conn, $qry)) {
+
+    // ✅ Auto login after registration (optional but professional)
+    $_SESSION['email'] = $email;
+    $_SESSION['name'] = $name;
+    $_SESSION['usertype'] = $usertype;
+
+    //  Redirect to browse books
+    header("Location: Home.html");
+    exit;
+
 } else {
-    echo "Error: " . mysqli_error($conn);
+    echo "<script>alert('Registration failed'); window.location.href='register.php';</script>";
 }
 
-// Close connection
 mysqli_close($conn);
 ?>

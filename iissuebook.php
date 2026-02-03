@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "fyp_db";
+$dbname = "fyp";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
